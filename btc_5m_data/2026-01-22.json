@@ -1,0 +1,2594 @@
+[
+  {
+    "startTime": "1769040000000",
+    "endTime": "1769040364000",
+    "openPrice": "89454.73000000",
+    "closePrice": "89597.92000000",
+    "maxPrice": "89616.94000000",
+    "minPrice": "89454.72000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769040300000",
+    "endTime": "1769040646000",
+    "openPrice": "89597.93000000",
+    "closePrice": "89678.24000000",
+    "maxPrice": "89678.24000000",
+    "minPrice": "89554.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769040600000",
+    "endTime": "1769040974000",
+    "openPrice": "89678.23000000",
+    "closePrice": "89710.40000000",
+    "maxPrice": "89735.97000000",
+    "minPrice": "89603.44000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769040900000",
+    "endTime": "1769041246000",
+    "openPrice": "89710.40000000",
+    "closePrice": "89734.53000000",
+    "maxPrice": "89772.90000000",
+    "minPrice": "89600.25000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769041200000",
+    "endTime": "1769041548000",
+    "openPrice": "89734.52000000",
+    "closePrice": "89799.99000000",
+    "maxPrice": "89800.00000000",
+    "minPrice": "89710.27000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769041500000",
+    "endTime": "1769041876000",
+    "openPrice": "89800.00000000",
+    "closePrice": "89839.15000000",
+    "maxPrice": "89900.00000000",
+    "minPrice": "89799.99000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769041800000",
+    "endTime": "1769042166000",
+    "openPrice": "89839.14000000",
+    "closePrice": "89892.01000000",
+    "maxPrice": "89965.00000000",
+    "minPrice": "89839.14000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769042100000",
+    "endTime": "1769042450000",
+    "openPrice": "89892.01000000",
+    "closePrice": "89928.17000000",
+    "maxPrice": "89938.01000000",
+    "minPrice": "89873.57000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769042400000",
+    "endTime": "1769042780000",
+    "openPrice": "89928.17000000",
+    "closePrice": "89939.99000000",
+    "maxPrice": "90010.62000000",
+    "minPrice": "89908.02000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769042700000",
+    "endTime": "1769043052000",
+    "openPrice": "89939.99000000",
+    "closePrice": "89942.94000000",
+    "maxPrice": "89971.47000000",
+    "minPrice": "89908.79000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769043000000",
+    "endTime": "1769043370000",
+    "openPrice": "89942.94000000",
+    "closePrice": "89988.28000000",
+    "maxPrice": "90032.50000000",
+    "minPrice": "89926.45000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769043300000",
+    "endTime": "1769043704000",
+    "openPrice": "89988.29000000",
+    "closePrice": "89908.49000000",
+    "maxPrice": "90015.46000000",
+    "minPrice": "89867.85000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769043600000",
+    "endTime": "1769043954000",
+    "openPrice": "89908.50000000",
+    "closePrice": "89999.04000000",
+    "maxPrice": "90116.01000000",
+    "minPrice": "89826.38000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769043900000",
+    "endTime": "1769044246000",
+    "openPrice": "89999.03000000",
+    "closePrice": "89956.95000000",
+    "maxPrice": "89999.04000000",
+    "minPrice": "89908.02000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769044200000",
+    "endTime": "1769044580000",
+    "openPrice": "89956.95000000",
+    "closePrice": "90006.25000000",
+    "maxPrice": "90006.26000000",
+    "minPrice": "89935.64000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769044500000",
+    "endTime": "1769044850000",
+    "openPrice": "90006.25000000",
+    "closePrice": "90105.83000000",
+    "maxPrice": "90148.72000000",
+    "minPrice": "90000.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769044800000",
+    "endTime": "1769045148000",
+    "openPrice": "90105.83000000",
+    "closePrice": "90133.00000000",
+    "maxPrice": "90193.52000000",
+    "minPrice": "90042.17000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769045100000",
+    "endTime": "1769045480000",
+    "openPrice": "90133.01000000",
+    "closePrice": "90135.07000000",
+    "maxPrice": "90198.51000000",
+    "minPrice": "90081.28000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769045400000",
+    "endTime": "1769045746000",
+    "openPrice": "90135.06000000",
+    "closePrice": "90072.42000000",
+    "maxPrice": "90194.00000000",
+    "minPrice": "90042.17000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769045700000",
+    "endTime": "1769046046000",
+    "openPrice": "90072.41000000",
+    "closePrice": "90030.01000000",
+    "maxPrice": "90084.10000000",
+    "minPrice": "90030.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769046000000",
+    "endTime": "1769046382000",
+    "openPrice": "90030.01000000",
+    "closePrice": "89992.84000000",
+    "maxPrice": "90032.26000000",
+    "minPrice": "89924.77000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769046300000",
+    "endTime": "1769046666000",
+    "openPrice": "89992.84000000",
+    "closePrice": "90130.42000000",
+    "maxPrice": "90130.43000000",
+    "minPrice": "89952.41000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769046600000",
+    "endTime": "1769046946000",
+    "openPrice": "90130.42000000",
+    "closePrice": "90145.88000000",
+    "maxPrice": "90173.98000000",
+    "minPrice": "90015.43000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769046900000",
+    "endTime": "1769047276000",
+    "openPrice": "90145.87000000",
+    "closePrice": "90113.19000000",
+    "maxPrice": "90147.46000000",
+    "minPrice": "90066.20000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769047200000",
+    "endTime": "1769047546000",
+    "openPrice": "90113.20000000",
+    "closePrice": "90042.17000000",
+    "maxPrice": "90137.07000000",
+    "minPrice": "90036.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769047500000",
+    "endTime": "1769047866000",
+    "openPrice": "90042.18000000",
+    "closePrice": "90137.22000000",
+    "maxPrice": "90147.44000000",
+    "minPrice": "90042.17000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769047800000",
+    "endTime": "1769048172000",
+    "openPrice": "90137.22000000",
+    "closePrice": "90183.96000000",
+    "maxPrice": "90183.97000000",
+    "minPrice": "90042.17000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769048100000",
+    "endTime": "1769048468000",
+    "openPrice": "90183.97000000",
+    "closePrice": "90255.25000000",
+    "maxPrice": "90280.00000000",
+    "minPrice": "90148.71000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769048400000",
+    "endTime": "1769048746000",
+    "openPrice": "90255.25000000",
+    "closePrice": "90266.71000000",
+    "maxPrice": "90292.00000000",
+    "minPrice": "90210.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769048700000",
+    "endTime": "1769049080000",
+    "openPrice": "90266.71000000",
+    "closePrice": "90291.83000000",
+    "maxPrice": "90359.99000000",
+    "minPrice": "90263.94000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769049000000",
+    "endTime": "1769049346000",
+    "openPrice": "90291.82000000",
+    "closePrice": "90090.00000000",
+    "maxPrice": "90291.82000000",
+    "minPrice": "90081.01000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769049300000",
+    "endTime": "1769049646000",
+    "openPrice": "90090.01000000",
+    "closePrice": "90087.25000000",
+    "maxPrice": "90112.14000000",
+    "minPrice": "90052.23000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769049600000",
+    "endTime": "1769049986000",
+    "openPrice": "90087.25000000",
+    "closePrice": "90115.45000000",
+    "maxPrice": "90146.00000000",
+    "minPrice": "90060.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769049900000",
+    "endTime": "1769050264000",
+    "openPrice": "90115.46000000",
+    "closePrice": "90077.66000000",
+    "maxPrice": "90115.46000000",
+    "minPrice": "90054.16000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769050200000",
+    "endTime": "1769050546000",
+    "openPrice": "90077.66000000",
+    "closePrice": "89874.91000000",
+    "maxPrice": "90077.67000000",
+    "minPrice": "89851.03000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769050500000",
+    "endTime": "1769050876000",
+    "openPrice": "89874.90000000",
+    "closePrice": "89938.30000000",
+    "maxPrice": "89966.33000000",
+    "minPrice": "89851.36000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769050800000",
+    "endTime": "1769051146000",
+    "openPrice": "89938.30000000",
+    "closePrice": "90072.00000000",
+    "maxPrice": "90074.15000000",
+    "minPrice": "89938.30000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769051100000",
+    "endTime": "1769051446000",
+    "openPrice": "90072.00000000",
+    "closePrice": "90112.08000000",
+    "maxPrice": "90150.69000000",
+    "minPrice": "90048.01000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769051400000",
+    "endTime": "1769051776000",
+    "openPrice": "90112.09000000",
+    "closePrice": "90100.60000000",
+    "maxPrice": "90166.67000000",
+    "minPrice": "90100.60000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769051700000",
+    "endTime": "1769052068000",
+    "openPrice": "90100.60000000",
+    "closePrice": "89941.38000000",
+    "maxPrice": "90100.60000000",
+    "minPrice": "89841.59000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769052000000",
+    "endTime": "1769052346000",
+    "openPrice": "89941.38000000",
+    "closePrice": "90013.38000000",
+    "maxPrice": "90021.90000000",
+    "minPrice": "89941.38000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769052300000",
+    "endTime": "1769052676000",
+    "openPrice": "90013.38000000",
+    "closePrice": "89936.49000000",
+    "maxPrice": "90013.38000000",
+    "minPrice": "89887.26000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769052600000",
+    "endTime": "1769052968000",
+    "openPrice": "89936.49000000",
+    "closePrice": "89745.33000000",
+    "maxPrice": "89936.49000000",
+    "minPrice": "89733.33000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769052900000",
+    "endTime": "1769053246000",
+    "openPrice": "89745.34000000",
+    "closePrice": "89811.72000000",
+    "maxPrice": "89846.50000000",
+    "minPrice": "89702.84000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769053200000",
+    "endTime": "1769053580000",
+    "openPrice": "89811.73000000",
+    "closePrice": "89839.29000000",
+    "maxPrice": "89845.24000000",
+    "minPrice": "89794.97000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769053500000",
+    "endTime": "1769053846000",
+    "openPrice": "89839.28000000",
+    "closePrice": "89886.39000000",
+    "maxPrice": "89886.39000000",
+    "minPrice": "89816.38000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769053800000",
+    "endTime": "1769054146000",
+    "openPrice": "89886.38000000",
+    "closePrice": "89872.98000000",
+    "maxPrice": "89887.43000000",
+    "minPrice": "89863.53000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769054100000",
+    "endTime": "1769054468000",
+    "openPrice": "89872.97000000",
+    "closePrice": "89899.51000000",
+    "maxPrice": "89899.99000000",
+    "minPrice": "89872.97000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769054400000",
+    "endTime": "1769054746000",
+    "openPrice": "89899.51000000",
+    "closePrice": "89839.63000000",
+    "maxPrice": "89916.45000000",
+    "minPrice": "89839.63000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769054700000",
+    "endTime": "1769055046000",
+    "openPrice": "89839.63000000",
+    "closePrice": "89947.50000000",
+    "maxPrice": "89955.00000000",
+    "minPrice": "89829.23000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769055000000",
+    "endTime": "1769055376000",
+    "openPrice": "89947.50000000",
+    "closePrice": "89876.77000000",
+    "maxPrice": "89982.47000000",
+    "minPrice": "89876.76000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769055300000",
+    "endTime": "1769055646000",
+    "openPrice": "89876.76000000",
+    "closePrice": "89915.58000000",
+    "maxPrice": "89935.65000000",
+    "minPrice": "89826.67000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769055600000",
+    "endTime": "1769055946000",
+    "openPrice": "89915.58000000",
+    "closePrice": "89917.10000000",
+    "maxPrice": "89927.95000000",
+    "minPrice": "89833.09000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769055900000",
+    "endTime": "1769056276000",
+    "openPrice": "89917.11000000",
+    "closePrice": "89975.96000000",
+    "maxPrice": "89987.75000000",
+    "minPrice": "89898.81000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769056200000",
+    "endTime": "1769056548000",
+    "openPrice": "89975.95000000",
+    "closePrice": "90004.31000000",
+    "maxPrice": "90010.62000000",
+    "minPrice": "89926.92000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769056500000",
+    "endTime": "1769056862000",
+    "openPrice": "90004.30000000",
+    "closePrice": "89900.98000000",
+    "maxPrice": "90023.19000000",
+    "minPrice": "89900.98000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769056800000",
+    "endTime": "1769057180000",
+    "openPrice": "89900.98000000",
+    "closePrice": "89998.60000000",
+    "maxPrice": "89998.60000000",
+    "minPrice": "89900.98000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769057100000",
+    "endTime": "1769057486000",
+    "openPrice": "89998.59000000",
+    "closePrice": "90027.21000000",
+    "maxPrice": "90027.21000000",
+    "minPrice": "89981.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769057400000",
+    "endTime": "1769057746000",
+    "openPrice": "90027.21000000",
+    "closePrice": "90058.11000000",
+    "maxPrice": "90076.77000000",
+    "minPrice": "90027.20000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769057700000",
+    "endTime": "1769058090000",
+    "openPrice": "90058.12000000",
+    "closePrice": "89998.91000000",
+    "maxPrice": "90060.00000000",
+    "minPrice": "89978.30000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769058000000",
+    "endTime": "1769058346000",
+    "openPrice": "89998.91000000",
+    "closePrice": "90041.16000000",
+    "maxPrice": "90041.17000000",
+    "minPrice": "89988.14000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769058300000",
+    "endTime": "1769058648000",
+    "openPrice": "90041.16000000",
+    "closePrice": "90052.02000000",
+    "maxPrice": "90075.80000000",
+    "minPrice": "90017.64000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769058600000",
+    "endTime": "1769058970000",
+    "openPrice": "90052.03000000",
+    "closePrice": "90045.97000000",
+    "maxPrice": "90070.05000000",
+    "minPrice": "90020.12000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769058900000",
+    "endTime": "1769059246000",
+    "openPrice": "90045.97000000",
+    "closePrice": "90037.97000000",
+    "maxPrice": "90051.65000000",
+    "minPrice": "90037.83000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769059200000",
+    "endTime": "1769059582000",
+    "openPrice": "90037.96000000",
+    "closePrice": "90018.11000000",
+    "maxPrice": "90037.97000000",
+    "minPrice": "89966.31000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769059500000",
+    "endTime": "1769059882000",
+    "openPrice": "90018.11000000",
+    "closePrice": "89977.81000000",
+    "maxPrice": "90037.24000000",
+    "minPrice": "89977.80000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769059800000",
+    "endTime": "1769060176000",
+    "openPrice": "89977.81000000",
+    "closePrice": "89963.73000000",
+    "maxPrice": "89995.00000000",
+    "minPrice": "89959.14000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769060100000",
+    "endTime": "1769060450000",
+    "openPrice": "89963.73000000",
+    "closePrice": "89999.99000000",
+    "maxPrice": "90000.00000000",
+    "minPrice": "89928.09000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769060400000",
+    "endTime": "1769060776000",
+    "openPrice": "90000.00000000",
+    "closePrice": "90010.62000000",
+    "maxPrice": "90045.65000000",
+    "minPrice": "89989.70000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769060700000",
+    "endTime": "1769061066000",
+    "openPrice": "90010.61000000",
+    "closePrice": "90021.01000000",
+    "maxPrice": "90042.18000000",
+    "minPrice": "89990.17000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769061000000",
+    "endTime": "1769061366000",
+    "openPrice": "90021.02000000",
+    "closePrice": "89961.55000000",
+    "maxPrice": "90044.00000000",
+    "minPrice": "89950.34000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769061300000",
+    "endTime": "1769061714000",
+    "openPrice": "89961.54000000",
+    "closePrice": "90026.30000000",
+    "maxPrice": "90026.31000000",
+    "minPrice": "89930.12000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769061600000",
+    "endTime": "1769061968000",
+    "openPrice": "90026.30000000",
+    "closePrice": "90124.21000000",
+    "maxPrice": "90130.00000000",
+    "minPrice": "90026.30000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769061900000",
+    "endTime": "1769062246000",
+    "openPrice": "90124.20000000",
+    "closePrice": "89949.50000000",
+    "maxPrice": "90124.21000000",
+    "minPrice": "89936.36000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769062200000",
+    "endTime": "1769062598000",
+    "openPrice": "89949.51000000",
+    "closePrice": "90037.83000000",
+    "maxPrice": "90037.83000000",
+    "minPrice": "89900.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769062500000",
+    "endTime": "1769062848000",
+    "openPrice": "90037.82000000",
+    "closePrice": "90036.42000000",
+    "maxPrice": "90086.00000000",
+    "minPrice": "89984.40000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769062800000",
+    "endTime": "1769063150000",
+    "openPrice": "90036.42000000",
+    "closePrice": "89999.10000000",
+    "maxPrice": "90078.93000000",
+    "minPrice": "89988.93000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769063100000",
+    "endTime": "1769063502000",
+    "openPrice": "89999.10000000",
+    "closePrice": "90004.63000000",
+    "maxPrice": "90015.38000000",
+    "minPrice": "89987.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769063400000",
+    "endTime": "1769063746000",
+    "openPrice": "90004.63000000",
+    "closePrice": "90057.00000000",
+    "maxPrice": "90087.34000000",
+    "minPrice": "89998.57000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769063700000",
+    "endTime": "1769064050000",
+    "openPrice": "90057.00000000",
+    "closePrice": "90127.01000000",
+    "maxPrice": "90142.72000000",
+    "minPrice": "90044.99000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769064000000",
+    "endTime": "1769064374000",
+    "openPrice": "90127.01000000",
+    "closePrice": "90157.99000000",
+    "maxPrice": "90199.00000000",
+    "minPrice": "90113.19000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769064300000",
+    "endTime": "1769064646000",
+    "openPrice": "90158.00000000",
+    "closePrice": "90178.00000000",
+    "maxPrice": "90215.79000000",
+    "minPrice": "90157.49000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769064600000",
+    "endTime": "1769064946000",
+    "openPrice": "90178.00000000",
+    "closePrice": "90175.90000000",
+    "maxPrice": "90200.00000000",
+    "minPrice": "90150.89000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769064900000",
+    "endTime": "1769065272000",
+    "openPrice": "90175.91000000",
+    "closePrice": "90172.11000000",
+    "maxPrice": "90200.15000000",
+    "minPrice": "90158.20000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769065200000",
+    "endTime": "1769065548000",
+    "openPrice": "90172.12000000",
+    "closePrice": "90084.35000000",
+    "maxPrice": "90196.99000000",
+    "minPrice": "90075.38000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769065500000",
+    "endTime": "1769065846000",
+    "openPrice": "90084.36000000",
+    "closePrice": "90082.60000000",
+    "maxPrice": "90109.42000000",
+    "minPrice": "90082.59000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769065800000",
+    "endTime": "1769066176000",
+    "openPrice": "90082.59000000",
+    "closePrice": "90062.21000000",
+    "maxPrice": "90116.74000000",
+    "minPrice": "90053.19000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769066100000",
+    "endTime": "1769066446000",
+    "openPrice": "90062.20000000",
+    "closePrice": "89995.76000000",
+    "maxPrice": "90086.06000000",
+    "minPrice": "89965.38000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769066400000",
+    "endTime": "1769066752000",
+    "openPrice": "89995.77000000",
+    "closePrice": "89951.80000000",
+    "maxPrice": "90002.80000000",
+    "minPrice": "89942.93000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769066700000",
+    "endTime": "1769067094000",
+    "openPrice": "89951.80000000",
+    "closePrice": "89971.71000000",
+    "maxPrice": "89996.92000000",
+    "minPrice": "89930.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769067000000",
+    "endTime": "1769067346000",
+    "openPrice": "89971.72000000",
+    "closePrice": "89968.00000000",
+    "maxPrice": "89971.72000000",
+    "minPrice": "89900.05000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769067300000",
+    "endTime": "1769067668000",
+    "openPrice": "89967.99000000",
+    "closePrice": "89935.89000000",
+    "maxPrice": "89969.26000000",
+    "minPrice": "89935.88000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769067600000",
+    "endTime": "1769068014000",
+    "openPrice": "89935.88000000",
+    "closePrice": "89943.22000000",
+    "maxPrice": "89983.27000000",
+    "minPrice": "89916.49000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769067900000",
+    "endTime": "1769068246000",
+    "openPrice": "89943.22000000",
+    "closePrice": "89945.14000000",
+    "maxPrice": "89956.84000000",
+    "minPrice": "89919.60000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769068200000",
+    "endTime": "1769068546000",
+    "openPrice": "89945.14000000",
+    "closePrice": "89853.43000000",
+    "maxPrice": "89950.67000000",
+    "minPrice": "89853.42000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769068500000",
+    "endTime": "1769068874000",
+    "openPrice": "89853.42000000",
+    "closePrice": "89818.79000000",
+    "maxPrice": "89853.43000000",
+    "minPrice": "89802.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769068800000",
+    "endTime": "1769069146000",
+    "openPrice": "89818.79000000",
+    "closePrice": "89911.97000000",
+    "maxPrice": "89931.32000000",
+    "minPrice": "89818.79000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769069100000",
+    "endTime": "1769069446000",
+    "openPrice": "89911.98000000",
+    "closePrice": "89935.65000000",
+    "maxPrice": "89968.28000000",
+    "minPrice": "89911.97000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769069400000",
+    "endTime": "1769069782000",
+    "openPrice": "89935.65000000",
+    "closePrice": "89770.01000000",
+    "maxPrice": "89935.65000000",
+    "minPrice": "89770.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769069700000",
+    "endTime": "1769070046000",
+    "openPrice": "89770.00000000",
+    "closePrice": "89901.59000000",
+    "maxPrice": "89939.49000000",
+    "minPrice": "89760.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769070000000",
+    "endTime": "1769070348000",
+    "openPrice": "89901.59000000",
+    "closePrice": "89876.33000000",
+    "maxPrice": "89908.21000000",
+    "minPrice": "89850.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769070300000",
+    "endTime": "1769070676000",
+    "openPrice": "89876.33000000",
+    "closePrice": "89876.05000000",
+    "maxPrice": "89937.00000000",
+    "minPrice": "89862.76000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769070600000",
+    "endTime": "1769070974000",
+    "openPrice": "89876.05000000",
+    "closePrice": "89831.99000000",
+    "maxPrice": "89876.06000000",
+    "minPrice": "89777.41000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769070900000",
+    "endTime": "1769071308000",
+    "openPrice": "89832.00000000",
+    "closePrice": "89857.58000000",
+    "maxPrice": "89857.58000000",
+    "minPrice": "89794.82000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769071200000",
+    "endTime": "1769071574000",
+    "openPrice": "89857.59000000",
+    "closePrice": "89821.16000000",
+    "maxPrice": "89900.00000000",
+    "minPrice": "89821.16000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769071500000",
+    "endTime": "1769071846000",
+    "openPrice": "89821.16000000",
+    "closePrice": "89821.60000000",
+    "maxPrice": "89845.05000000",
+    "minPrice": "89802.76000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769071800000",
+    "endTime": "1769072146000",
+    "openPrice": "89821.59000000",
+    "closePrice": "89898.76000000",
+    "maxPrice": "89959.77000000",
+    "minPrice": "89821.59000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769072100000",
+    "endTime": "1769072516000",
+    "openPrice": "89898.76000000",
+    "closePrice": "89920.16000000",
+    "maxPrice": "89949.55000000",
+    "minPrice": "89880.37000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769072400000",
+    "endTime": "1769072748000",
+    "openPrice": "89920.16000000",
+    "closePrice": "89928.89000000",
+    "maxPrice": "89941.69000000",
+    "minPrice": "89883.80000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769072700000",
+    "endTime": "1769073068000",
+    "openPrice": "89928.90000000",
+    "closePrice": "90010.61000000",
+    "maxPrice": "90037.83000000",
+    "minPrice": "89928.89000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769073000000",
+    "endTime": "1769073368000",
+    "openPrice": "90010.62000000",
+    "closePrice": "90043.69000000",
+    "maxPrice": "90060.00000000",
+    "minPrice": "90006.85000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769073300000",
+    "endTime": "1769073646000",
+    "openPrice": "90043.70000000",
+    "closePrice": "89984.61000000",
+    "maxPrice": "90073.85000000",
+    "minPrice": "89954.85000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769073600000",
+    "endTime": "1769073946000",
+    "openPrice": "89984.62000000",
+    "closePrice": "90001.21000000",
+    "maxPrice": "90010.55000000",
+    "minPrice": "89984.61000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769073900000",
+    "endTime": "1769074276000",
+    "openPrice": "90001.22000000",
+    "closePrice": "89993.25000000",
+    "maxPrice": "90025.89000000",
+    "minPrice": "89981.99000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769074200000",
+    "endTime": "1769074568000",
+    "openPrice": "89993.24000000",
+    "closePrice": "89996.21000000",
+    "maxPrice": "90044.60000000",
+    "minPrice": "89950.33000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769074500000",
+    "endTime": "1769074846000",
+    "openPrice": "89996.22000000",
+    "closePrice": "90093.36000000",
+    "maxPrice": "90113.20000000",
+    "minPrice": "89996.22000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769074800000",
+    "endTime": "1769075176000",
+    "openPrice": "90093.35000000",
+    "closePrice": "90103.24000000",
+    "maxPrice": "90113.43000000",
+    "minPrice": "90093.35000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769075100000",
+    "endTime": "1769075466000",
+    "openPrice": "90103.24000000",
+    "closePrice": "90102.64000000",
+    "maxPrice": "90113.00000000",
+    "minPrice": "90071.96000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769075400000",
+    "endTime": "1769075746000",
+    "openPrice": "90102.64000000",
+    "closePrice": "90047.63000000",
+    "maxPrice": "90102.65000000",
+    "minPrice": "90029.64000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769075700000",
+    "endTime": "1769076076000",
+    "openPrice": "90047.64000000",
+    "closePrice": "90033.02000000",
+    "maxPrice": "90047.64000000",
+    "minPrice": "90020.38000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769076000000",
+    "endTime": "1769076346000",
+    "openPrice": "90033.02000000",
+    "closePrice": "89982.43000000",
+    "maxPrice": "90046.92000000",
+    "minPrice": "89960.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769076300000",
+    "endTime": "1769076670000",
+    "openPrice": "89982.43000000",
+    "closePrice": "90032.10000000",
+    "maxPrice": "90032.11000000",
+    "minPrice": "89960.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769076600000",
+    "endTime": "1769076984000",
+    "openPrice": "90032.11000000",
+    "closePrice": "90031.11000000",
+    "maxPrice": "90049.99000000",
+    "minPrice": "89984.37000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769076900000",
+    "endTime": "1769077256000",
+    "openPrice": "90031.11000000",
+    "closePrice": "89999.11000000",
+    "maxPrice": "90059.21000000",
+    "minPrice": "89980.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769077200000",
+    "endTime": "1769077550000",
+    "openPrice": "89999.11000000",
+    "closePrice": "90043.84000000",
+    "maxPrice": "90099.13000000",
+    "minPrice": "89999.10000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769077500000",
+    "endTime": "1769077874000",
+    "openPrice": "90043.85000000",
+    "closePrice": "90029.37000000",
+    "maxPrice": "90065.04000000",
+    "minPrice": "90029.36000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769077800000",
+    "endTime": "1769078150000",
+    "openPrice": "90029.37000000",
+    "closePrice": "90063.65000000",
+    "maxPrice": "90066.62000000",
+    "minPrice": "90013.38000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769078100000",
+    "endTime": "1769078470000",
+    "openPrice": "90063.66000000",
+    "closePrice": "90020.77000000",
+    "maxPrice": "90063.66000000",
+    "minPrice": "90011.17000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769078400000",
+    "endTime": "1769078792000",
+    "openPrice": "90020.78000000",
+    "closePrice": "90058.50000000",
+    "maxPrice": "90058.50000000",
+    "minPrice": "90019.34000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769078700000",
+    "endTime": "1769079052000",
+    "openPrice": "90058.49000000",
+    "closePrice": "90052.11000000",
+    "maxPrice": "90064.86000000",
+    "minPrice": "90020.37000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769079000000",
+    "endTime": "1769079350000",
+    "openPrice": "90052.12000000",
+    "closePrice": "90101.83000000",
+    "maxPrice": "90101.83000000",
+    "minPrice": "90043.58000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769079300000",
+    "endTime": "1769079686000",
+    "openPrice": "90101.83000000",
+    "closePrice": "90078.77000000",
+    "maxPrice": "90101.83000000",
+    "minPrice": "90070.09000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769079600000",
+    "endTime": "1769079992000",
+    "openPrice": "90078.76000000",
+    "closePrice": "90043.49000000",
+    "maxPrice": "90079.62000000",
+    "minPrice": "90037.82000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769079900000",
+    "endTime": "1769080254000",
+    "openPrice": "90043.50000000",
+    "closePrice": "90087.27000000",
+    "maxPrice": "90087.27000000",
+    "minPrice": "90037.82000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769080200000",
+    "endTime": "1769080588000",
+    "openPrice": "90087.27000000",
+    "closePrice": "89987.17000000",
+    "maxPrice": "90150.00000000",
+    "minPrice": "89940.02000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769080500000",
+    "endTime": "1769080854000",
+    "openPrice": "89987.17000000",
+    "closePrice": "90014.23000000",
+    "maxPrice": "90024.03000000",
+    "minPrice": "89940.01000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769080800000",
+    "endTime": "1769081172000",
+    "openPrice": "90014.23000000",
+    "closePrice": "89968.66000000",
+    "maxPrice": "90027.35000000",
+    "minPrice": "89954.34000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769081100000",
+    "endTime": "1769081486000",
+    "openPrice": "89968.67000000",
+    "closePrice": "89952.81000000",
+    "maxPrice": "89973.79000000",
+    "minPrice": "89911.99000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769081400000",
+    "endTime": "1769081748000",
+    "openPrice": "89952.81000000",
+    "closePrice": "90013.52000000",
+    "maxPrice": "90021.20000000",
+    "minPrice": "89937.79000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769081700000",
+    "endTime": "1769082046000",
+    "openPrice": "90013.53000000",
+    "closePrice": "89946.92000000",
+    "maxPrice": "90013.53000000",
+    "minPrice": "89900.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769082000000",
+    "endTime": "1769082412000",
+    "openPrice": "89946.92000000",
+    "closePrice": "89983.47000000",
+    "maxPrice": "90027.66000000",
+    "minPrice": "89897.87000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769082300000",
+    "endTime": "1769082648000",
+    "openPrice": "89983.47000000",
+    "closePrice": "90060.77000000",
+    "maxPrice": "90076.87000000",
+    "minPrice": "89977.16000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769082600000",
+    "endTime": "1769082950000",
+    "openPrice": "90060.77000000",
+    "closePrice": "89919.66000000",
+    "maxPrice": "90080.57000000",
+    "minPrice": "89909.51000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769082900000",
+    "endTime": "1769083284000",
+    "openPrice": "89919.66000000",
+    "closePrice": "89941.26000000",
+    "maxPrice": "89951.20000000",
+    "minPrice": "89919.65000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769083200000",
+    "endTime": "1769083550000",
+    "openPrice": "89941.26000000",
+    "closePrice": "89986.44000000",
+    "maxPrice": "89986.44000000",
+    "minPrice": "89873.09000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769083500000",
+    "endTime": "1769083854000",
+    "openPrice": "89986.44000000",
+    "closePrice": "90049.24000000",
+    "maxPrice": "90049.70000000",
+    "minPrice": "89963.33000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769083800000",
+    "endTime": "1769084192000",
+    "openPrice": "90049.24000000",
+    "closePrice": "90008.46000000",
+    "maxPrice": "90049.25000000",
+    "minPrice": "89972.91000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769084100000",
+    "endTime": "1769084472000",
+    "openPrice": "90008.46000000",
+    "closePrice": "90003.80000000",
+    "maxPrice": "90044.16000000",
+    "minPrice": "89995.68000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769084400000",
+    "endTime": "1769084772000",
+    "openPrice": "90003.80000000",
+    "closePrice": "90008.17000000",
+    "maxPrice": "90030.21000000",
+    "minPrice": "89988.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769084700000",
+    "endTime": "1769085102000",
+    "openPrice": "90008.17000000",
+    "closePrice": "90020.02000000",
+    "maxPrice": "90026.86000000",
+    "minPrice": "89988.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769085000000",
+    "endTime": "1769085354000",
+    "openPrice": "90020.02000000",
+    "closePrice": "90062.68000000",
+    "maxPrice": "90094.40000000",
+    "minPrice": "90002.53000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769085300000",
+    "endTime": "1769085674000",
+    "openPrice": "90062.69000000",
+    "closePrice": "90028.39000000",
+    "maxPrice": "90099.99000000",
+    "minPrice": "90028.38000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769085600000",
+    "endTime": "1769085986000",
+    "openPrice": "90028.38000000",
+    "closePrice": "90037.83000000",
+    "maxPrice": "90045.85000000",
+    "minPrice": "89989.34000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769085900000",
+    "endTime": "1769086250000",
+    "openPrice": "90037.82000000",
+    "closePrice": "90041.98000000",
+    "maxPrice": "90047.45000000",
+    "minPrice": "90016.82000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769086200000",
+    "endTime": "1769086554000",
+    "openPrice": "90041.98000000",
+    "closePrice": "90000.18000000",
+    "maxPrice": "90054.29000000",
+    "minPrice": "89988.30000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769086500000",
+    "endTime": "1769086942000",
+    "openPrice": "90000.17000000",
+    "closePrice": "90021.09000000",
+    "maxPrice": "90041.46000000",
+    "minPrice": "90000.17000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769086800000",
+    "endTime": "1769087154000",
+    "openPrice": "90021.09000000",
+    "closePrice": "90042.50000000",
+    "maxPrice": "90042.50000000",
+    "minPrice": "90009.21000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769087100000",
+    "endTime": "1769087454000",
+    "openPrice": "90042.50000000",
+    "closePrice": "90000.01000000",
+    "maxPrice": "90053.12000000",
+    "minPrice": "90000.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769087400000",
+    "endTime": "1769087770000",
+    "openPrice": "90000.00000000",
+    "closePrice": "90053.07000000",
+    "maxPrice": "90053.08000000",
+    "minPrice": "90000.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769087700000",
+    "endTime": "1769088054000",
+    "openPrice": "90053.08000000",
+    "closePrice": "90070.21000000",
+    "maxPrice": "90109.71000000",
+    "minPrice": "90053.03000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769088000000",
+    "endTime": "1769088388000",
+    "openPrice": "90070.22000000",
+    "closePrice": "90121.91000000",
+    "maxPrice": "90125.73000000",
+    "minPrice": "90070.21000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769088300000",
+    "endTime": "1769088690000",
+    "openPrice": "90121.90000000",
+    "closePrice": "90197.16000000",
+    "maxPrice": "90200.00000000",
+    "minPrice": "90116.76000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769088600000",
+    "endTime": "1769088952000",
+    "openPrice": "90197.17000000",
+    "closePrice": "89975.00000000",
+    "maxPrice": "90340.00000000",
+    "minPrice": "89900.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769088900000",
+    "endTime": "1769089254000",
+    "openPrice": "89975.00000000",
+    "closePrice": "89864.25000000",
+    "maxPrice": "89975.00000000",
+    "minPrice": "89753.40000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769089200000",
+    "endTime": "1769089586000",
+    "openPrice": "89864.25000000",
+    "closePrice": "89622.76000000",
+    "maxPrice": "89867.24000000",
+    "minPrice": "89553.34000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769089500000",
+    "endTime": "1769089854000",
+    "openPrice": "89622.76000000",
+    "closePrice": "89661.14000000",
+    "maxPrice": "89733.84000000",
+    "minPrice": "89614.89000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769089800000",
+    "endTime": "1769090152000",
+    "openPrice": "89661.14000000",
+    "closePrice": "89554.01000000",
+    "maxPrice": "89661.15000000",
+    "minPrice": "89478.92000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769090100000",
+    "endTime": "1769090488000",
+    "openPrice": "89554.01000000",
+    "closePrice": "89619.81000000",
+    "maxPrice": "89662.00000000",
+    "minPrice": "89549.19000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769090400000",
+    "endTime": "1769090754000",
+    "openPrice": "89619.81000000",
+    "closePrice": "89580.24000000",
+    "maxPrice": "89629.96000000",
+    "minPrice": "89415.62000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769090700000",
+    "endTime": "1769091068000",
+    "openPrice": "89580.24000000",
+    "closePrice": "89528.67000000",
+    "maxPrice": "89581.92000000",
+    "minPrice": "89513.49000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769091000000",
+    "endTime": "1769091388000",
+    "openPrice": "89528.66000000",
+    "closePrice": "89702.84000000",
+    "maxPrice": "89702.85000000",
+    "minPrice": "89509.50000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769091300000",
+    "endTime": "1769091664000",
+    "openPrice": "89702.85000000",
+    "closePrice": "89621.04000000",
+    "maxPrice": "89702.85000000",
+    "minPrice": "89621.03000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769091600000",
+    "endTime": "1769091952000",
+    "openPrice": "89621.03000000",
+    "closePrice": "89418.18000000",
+    "maxPrice": "89621.04000000",
+    "minPrice": "89361.31000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769091900000",
+    "endTime": "1769092286000",
+    "openPrice": "89418.19000000",
+    "closePrice": "89574.08000000",
+    "maxPrice": "89585.60000000",
+    "minPrice": "89418.19000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769092200000",
+    "endTime": "1769092568000",
+    "openPrice": "89574.09000000",
+    "closePrice": "89487.53000000",
+    "maxPrice": "89646.75000000",
+    "minPrice": "89450.70000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769092500000",
+    "endTime": "1769092876000",
+    "openPrice": "89487.53000000",
+    "closePrice": "89605.78000000",
+    "maxPrice": "89742.67000000",
+    "minPrice": "89146.90000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769092800000",
+    "endTime": "1769093184000",
+    "openPrice": "89605.79000000",
+    "closePrice": "89486.10000000",
+    "maxPrice": "89723.13000000",
+    "minPrice": "89360.77000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769093100000",
+    "endTime": "1769093450000",
+    "openPrice": "89486.11000000",
+    "closePrice": "89108.18000000",
+    "maxPrice": "89511.63000000",
+    "minPrice": "89064.44000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769093400000",
+    "endTime": "1769093750000",
+    "openPrice": "89108.17000000",
+    "closePrice": "89390.50000000",
+    "maxPrice": "89420.55000000",
+    "minPrice": "89039.78000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769093700000",
+    "endTime": "1769094082000",
+    "openPrice": "89390.50000000",
+    "closePrice": "89088.59000000",
+    "maxPrice": "89390.50000000",
+    "minPrice": "89083.36000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769094000000",
+    "endTime": "1769094350000",
+    "openPrice": "89088.60000000",
+    "closePrice": "89318.58000000",
+    "maxPrice": "89325.63000000",
+    "minPrice": "89007.51000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769094300000",
+    "endTime": "1769094650000",
+    "openPrice": "89318.58000000",
+    "closePrice": "89279.99000000",
+    "maxPrice": "89318.59000000",
+    "minPrice": "89100.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769094600000",
+    "endTime": "1769094980000",
+    "openPrice": "89279.99000000",
+    "closePrice": "89258.84000000",
+    "maxPrice": "89383.15000000",
+    "minPrice": "89127.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769094900000",
+    "endTime": "1769095250000",
+    "openPrice": "89258.84000000",
+    "closePrice": "89201.70000000",
+    "maxPrice": "89369.77000000",
+    "minPrice": "89124.62000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769095200000",
+    "endTime": "1769095570000",
+    "openPrice": "89201.71000000",
+    "closePrice": "88842.48000000",
+    "maxPrice": "89325.70000000",
+    "minPrice": "88841.64000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769095500000",
+    "endTime": "1769095882000",
+    "openPrice": "88842.49000000",
+    "closePrice": "88658.05000000",
+    "maxPrice": "88933.16000000",
+    "minPrice": "88620.75000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769095800000",
+    "endTime": "1769096156000",
+    "openPrice": "88658.05000000",
+    "closePrice": "88692.42000000",
+    "maxPrice": "88770.48000000",
+    "minPrice": "88515.37000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769096100000",
+    "endTime": "1769096452000",
+    "openPrice": "88692.43000000",
+    "closePrice": "88858.01000000",
+    "maxPrice": "88926.52000000",
+    "minPrice": "88692.43000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769096400000",
+    "endTime": "1769096786000",
+    "openPrice": "88858.01000000",
+    "closePrice": "89150.07000000",
+    "maxPrice": "89180.49000000",
+    "minPrice": "88794.19000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769096700000",
+    "endTime": "1769097072000",
+    "openPrice": "89150.07000000",
+    "closePrice": "89186.55000000",
+    "maxPrice": "89445.24000000",
+    "minPrice": "89095.01000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769097000000",
+    "endTime": "1769097356000",
+    "openPrice": "89186.54000000",
+    "closePrice": "88955.25000000",
+    "maxPrice": "89265.75000000",
+    "minPrice": "88951.02000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769097300000",
+    "endTime": "1769097682000",
+    "openPrice": "88955.24000000",
+    "closePrice": "89000.01000000",
+    "maxPrice": "89066.77000000",
+    "minPrice": "88945.30000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769097600000",
+    "endTime": "1769097950000",
+    "openPrice": "89000.00000000",
+    "closePrice": "89093.22000000",
+    "maxPrice": "89200.00000000",
+    "minPrice": "89000.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769097900000",
+    "endTime": "1769098254000",
+    "openPrice": "89093.21000000",
+    "closePrice": "88901.68000000",
+    "maxPrice": "89114.25000000",
+    "minPrice": "88831.91000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769098200000",
+    "endTime": "1769098582000",
+    "openPrice": "88901.68000000",
+    "closePrice": "88843.79000000",
+    "maxPrice": "88968.00000000",
+    "minPrice": "88765.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769098500000",
+    "endTime": "1769098850000",
+    "openPrice": "88843.79000000",
+    "closePrice": "88765.62000000",
+    "maxPrice": "88879.25000000",
+    "minPrice": "88676.95000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769098800000",
+    "endTime": "1769099150000",
+    "openPrice": "88765.62000000",
+    "closePrice": "89100.00000000",
+    "maxPrice": "89171.74000000",
+    "minPrice": "88727.40000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769099100000",
+    "endTime": "1769099480000",
+    "openPrice": "89099.99000000",
+    "closePrice": "88992.10000000",
+    "maxPrice": "89195.63000000",
+    "minPrice": "88954.70000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769099400000",
+    "endTime": "1769099746000",
+    "openPrice": "88992.10000000",
+    "closePrice": "88832.51000000",
+    "maxPrice": "89130.89000000",
+    "minPrice": "88810.38000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769099700000",
+    "endTime": "1769100050000",
+    "openPrice": "88832.51000000",
+    "closePrice": "88907.25000000",
+    "maxPrice": "89037.94000000",
+    "minPrice": "88774.31000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769100000000",
+    "endTime": "1769100380000",
+    "openPrice": "88907.26000000",
+    "closePrice": "88972.45000000",
+    "maxPrice": "88976.84000000",
+    "minPrice": "88810.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769100300000",
+    "endTime": "1769100646000",
+    "openPrice": "88972.44000000",
+    "closePrice": "89107.43000000",
+    "maxPrice": "89270.00000000",
+    "minPrice": "88968.43000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769100600000",
+    "endTime": "1769100954000",
+    "openPrice": "89108.58000000",
+    "closePrice": "89002.22000000",
+    "maxPrice": "89146.90000000",
+    "minPrice": "88940.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769100900000",
+    "endTime": "1769101310000",
+    "openPrice": "89002.23000000",
+    "closePrice": "89054.06000000",
+    "maxPrice": "89064.24000000",
+    "minPrice": "88900.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769101200000",
+    "endTime": "1769101564000",
+    "openPrice": "89054.07000000",
+    "closePrice": "89175.99000000",
+    "maxPrice": "89236.56000000",
+    "minPrice": "89024.55000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769101500000",
+    "endTime": "1769101850000",
+    "openPrice": "89176.00000000",
+    "closePrice": "89340.16000000",
+    "maxPrice": "89371.42000000",
+    "minPrice": "89150.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769101800000",
+    "endTime": "1769102178000",
+    "openPrice": "89340.16000000",
+    "closePrice": "89228.33000000",
+    "maxPrice": "89439.98000000",
+    "minPrice": "89216.96000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769102100000",
+    "endTime": "1769102450000",
+    "openPrice": "89228.33000000",
+    "closePrice": "89323.57000000",
+    "maxPrice": "89400.00000000",
+    "minPrice": "89216.65000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769102400000",
+    "endTime": "1769102752000",
+    "openPrice": "89323.57000000",
+    "closePrice": "89299.03000000",
+    "maxPrice": "89431.17000000",
+    "minPrice": "89252.85000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769102700000",
+    "endTime": "1769103084000",
+    "openPrice": "89299.04000000",
+    "closePrice": "89148.33000000",
+    "maxPrice": "89299.04000000",
+    "minPrice": "89058.99000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769103000000",
+    "endTime": "1769103350000",
+    "openPrice": "89148.33000000",
+    "closePrice": "89181.94000000",
+    "maxPrice": "89289.83000000",
+    "minPrice": "89143.75000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769103300000",
+    "endTime": "1769103650000",
+    "openPrice": "89181.93000000",
+    "closePrice": "89100.01000000",
+    "maxPrice": "89214.34000000",
+    "minPrice": "89086.79000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769103600000",
+    "endTime": "1769104008000",
+    "openPrice": "89100.01000000",
+    "closePrice": "89230.71000000",
+    "maxPrice": "89230.71000000",
+    "minPrice": "89083.19000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769103900000",
+    "endTime": "1769104268000",
+    "openPrice": "89230.71000000",
+    "closePrice": "89427.27000000",
+    "maxPrice": "89517.18000000",
+    "minPrice": "89230.71000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769104200000",
+    "endTime": "1769104546000",
+    "openPrice": "89427.27000000",
+    "closePrice": "89506.54000000",
+    "maxPrice": "89519.72000000",
+    "minPrice": "89427.26000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769104500000",
+    "endTime": "1769104882000",
+    "openPrice": "89506.55000000",
+    "closePrice": "89550.01000000",
+    "maxPrice": "89616.04000000",
+    "minPrice": "89432.91000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769104800000",
+    "endTime": "1769105150000",
+    "openPrice": "89550.00000000",
+    "closePrice": "89395.07000000",
+    "maxPrice": "89562.64000000",
+    "minPrice": "89384.61000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769105100000",
+    "endTime": "1769105450000",
+    "openPrice": "89395.08000000",
+    "closePrice": "89527.39000000",
+    "maxPrice": "89615.38000000",
+    "minPrice": "89395.08000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769105400000",
+    "endTime": "1769105782000",
+    "openPrice": "89527.38000000",
+    "closePrice": "89474.03000000",
+    "maxPrice": "89557.75000000",
+    "minPrice": "89458.17000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769105700000",
+    "endTime": "1769106050000",
+    "openPrice": "89474.03000000",
+    "closePrice": "89731.44000000",
+    "maxPrice": "89731.45000000",
+    "minPrice": "89463.56000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769106000000",
+    "endTime": "1769106350000",
+    "openPrice": "89731.44000000",
+    "closePrice": "89591.48000000",
+    "maxPrice": "89797.50000000",
+    "minPrice": "89591.47000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769106300000",
+    "endTime": "1769106678000",
+    "openPrice": "89591.47000000",
+    "closePrice": "89616.04000000",
+    "maxPrice": "89628.49000000",
+    "minPrice": "89525.57000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769106600000",
+    "endTime": "1769106952000",
+    "openPrice": "89616.03000000",
+    "closePrice": "89721.01000000",
+    "maxPrice": "89767.34000000",
+    "minPrice": "89600.22000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769106900000",
+    "endTime": "1769107272000",
+    "openPrice": "89721.00000000",
+    "closePrice": "89720.75000000",
+    "maxPrice": "89742.67000000",
+    "minPrice": "89593.21000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769107200000",
+    "endTime": "1769107582000",
+    "openPrice": "89720.76000000",
+    "closePrice": "89668.60000000",
+    "maxPrice": "89758.32000000",
+    "minPrice": "89668.60000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769107500000",
+    "endTime": "1769107848000",
+    "openPrice": "89668.61000000",
+    "closePrice": "89581.54000000",
+    "maxPrice": "89715.61000000",
+    "minPrice": "89538.57000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769107800000",
+    "endTime": "1769108150000",
+    "openPrice": "89581.53000000",
+    "closePrice": "89415.81000000",
+    "maxPrice": "89587.70000000",
+    "minPrice": "89350.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769108100000",
+    "endTime": "1769108482000",
+    "openPrice": "89415.81000000",
+    "closePrice": "89333.94000000",
+    "maxPrice": "89428.83000000",
+    "minPrice": "89301.90000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769108400000",
+    "endTime": "1769108788000",
+    "openPrice": "89333.93000000",
+    "closePrice": "89210.00000000",
+    "maxPrice": "89361.41000000",
+    "minPrice": "89114.48000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769108700000",
+    "endTime": "1769109110000",
+    "openPrice": "89210.00000000",
+    "closePrice": "89410.21000000",
+    "maxPrice": "89410.21000000",
+    "minPrice": "89210.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769109000000",
+    "endTime": "1769109384000",
+    "openPrice": "89410.21000000",
+    "closePrice": "89399.12000000",
+    "maxPrice": "89460.00000000",
+    "minPrice": "89372.83000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769109300000",
+    "endTime": "1769109672000",
+    "openPrice": "89399.11000000",
+    "closePrice": "89414.23000000",
+    "maxPrice": "89414.23000000",
+    "minPrice": "89303.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769109600000",
+    "endTime": "1769109962000",
+    "openPrice": "89414.23000000",
+    "closePrice": "89554.28000000",
+    "maxPrice": "89569.68000000",
+    "minPrice": "89345.13000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769109900000",
+    "endTime": "1769110282000",
+    "openPrice": "89554.29000000",
+    "closePrice": "89504.99000000",
+    "maxPrice": "89577.96000000",
+    "minPrice": "89470.04000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769110200000",
+    "endTime": "1769110550000",
+    "openPrice": "89504.99000000",
+    "closePrice": "89668.85000000",
+    "maxPrice": "89672.81000000",
+    "minPrice": "89485.92000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769110500000",
+    "endTime": "1769110850000",
+    "openPrice": "89668.85000000",
+    "closePrice": "89842.01000000",
+    "maxPrice": "89872.04000000",
+    "minPrice": "89667.76000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769110800000",
+    "endTime": "1769111184000",
+    "openPrice": "89842.00000000",
+    "closePrice": "89845.71000000",
+    "maxPrice": "89880.00000000",
+    "minPrice": "89790.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769111100000",
+    "endTime": "1769111450000",
+    "openPrice": "89845.71000000",
+    "closePrice": "89658.72000000",
+    "maxPrice": "89924.46000000",
+    "minPrice": "89624.13000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769111400000",
+    "endTime": "1769111772000",
+    "openPrice": "89658.72000000",
+    "closePrice": "89860.00000000",
+    "maxPrice": "89866.00000000",
+    "minPrice": "89658.71000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769111700000",
+    "endTime": "1769112084000",
+    "openPrice": "89860.00000000",
+    "closePrice": "89777.90000000",
+    "maxPrice": "89867.25000000",
+    "minPrice": "89772.96000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769112000000",
+    "endTime": "1769112354000",
+    "openPrice": "89777.89000000",
+    "closePrice": "89799.99000000",
+    "maxPrice": "89846.50000000",
+    "minPrice": "89708.76000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769112300000",
+    "endTime": "1769112652000",
+    "openPrice": "89800.00000000",
+    "closePrice": "89860.00000000",
+    "maxPrice": "89860.00000000",
+    "minPrice": "89697.99000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769112600000",
+    "endTime": "1769112982000",
+    "openPrice": "89859.99000000",
+    "closePrice": "89924.00000000",
+    "maxPrice": "89924.00000000",
+    "minPrice": "89826.40000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769112900000",
+    "endTime": "1769113250000",
+    "openPrice": "89923.99000000",
+    "closePrice": "89873.42000000",
+    "maxPrice": "89946.13000000",
+    "minPrice": "89828.94000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769113200000",
+    "endTime": "1769113550000",
+    "openPrice": "89873.41000000",
+    "closePrice": "89688.01000000",
+    "maxPrice": "89925.37000000",
+    "minPrice": "89688.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769113500000",
+    "endTime": "1769113882000",
+    "openPrice": "89688.01000000",
+    "closePrice": "89574.44000000",
+    "maxPrice": "89688.01000000",
+    "minPrice": "89564.44000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769113800000",
+    "endTime": "1769114150000",
+    "openPrice": "89574.44000000",
+    "closePrice": "89649.15000000",
+    "maxPrice": "89713.26000000",
+    "minPrice": "89472.53000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769114100000",
+    "endTime": "1769114456000",
+    "openPrice": "89649.04000000",
+    "closePrice": "89595.14000000",
+    "maxPrice": "89670.56000000",
+    "minPrice": "89488.52000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769114400000",
+    "endTime": "1769114782000",
+    "openPrice": "89595.15000000",
+    "closePrice": "89507.70000000",
+    "maxPrice": "89616.04000000",
+    "minPrice": "89468.75000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769114700000",
+    "endTime": "1769115050000",
+    "openPrice": "89507.70000000",
+    "closePrice": "89536.96000000",
+    "maxPrice": "89550.00000000",
+    "minPrice": "89477.08000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769115000000",
+    "endTime": "1769115370000",
+    "openPrice": "89536.97000000",
+    "closePrice": "89472.54000000",
+    "maxPrice": "89552.86000000",
+    "minPrice": "89434.88000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769115300000",
+    "endTime": "1769115716000",
+    "openPrice": "89472.54000000",
+    "closePrice": "89409.72000000",
+    "maxPrice": "89500.00000000",
+    "minPrice": "89398.87000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769115600000",
+    "endTime": "1769115950000",
+    "openPrice": "89409.73000000",
+    "closePrice": "89384.00000000",
+    "maxPrice": "89585.60000000",
+    "minPrice": "89384.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769115900000",
+    "endTime": "1769116250000",
+    "openPrice": "89384.00000000",
+    "closePrice": "89568.44000000",
+    "maxPrice": "89568.45000000",
+    "minPrice": "89384.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769116200000",
+    "endTime": "1769116584000",
+    "openPrice": "89568.44000000",
+    "closePrice": "89540.01000000",
+    "maxPrice": "89625.40000000",
+    "minPrice": "89540.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769116500000",
+    "endTime": "1769116860000",
+    "openPrice": "89540.01000000",
+    "closePrice": "89632.09000000",
+    "maxPrice": "89638.84000000",
+    "minPrice": "89540.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769116800000",
+    "endTime": "1769117150000",
+    "openPrice": "89632.08000000",
+    "closePrice": "89634.69000000",
+    "maxPrice": "89669.21000000",
+    "minPrice": "89617.03000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769117100000",
+    "endTime": "1769117474000",
+    "openPrice": "89634.68000000",
+    "closePrice": "89571.54000000",
+    "maxPrice": "89634.68000000",
+    "minPrice": "89571.54000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769117400000",
+    "endTime": "1769117750000",
+    "openPrice": "89571.54000000",
+    "closePrice": "89538.24000000",
+    "maxPrice": "89600.00000000",
+    "minPrice": "89510.88000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769117700000",
+    "endTime": "1769118070000",
+    "openPrice": "89538.23000000",
+    "closePrice": "89513.62000000",
+    "maxPrice": "89560.00000000",
+    "minPrice": "89513.62000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769118000000",
+    "endTime": "1769118382000",
+    "openPrice": "89513.63000000",
+    "closePrice": "89392.01000000",
+    "maxPrice": "89516.77000000",
+    "minPrice": "89392.01000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769118300000",
+    "endTime": "1769118672000",
+    "openPrice": "89392.00000000",
+    "closePrice": "89341.19000000",
+    "maxPrice": "89392.00000000",
+    "minPrice": "89238.32000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769118600000",
+    "endTime": "1769118968000",
+    "openPrice": "89341.18000000",
+    "closePrice": "89365.69000000",
+    "maxPrice": "89374.25000000",
+    "minPrice": "89320.51000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769118900000",
+    "endTime": "1769119286000",
+    "openPrice": "89365.70000000",
+    "closePrice": "89268.66000000",
+    "maxPrice": "89375.92000000",
+    "minPrice": "89246.42000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769119200000",
+    "endTime": "1769119550000",
+    "openPrice": "89268.66000000",
+    "closePrice": "89249.53000000",
+    "maxPrice": "89268.66000000",
+    "minPrice": "89140.13000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769119500000",
+    "endTime": "1769119850000",
+    "openPrice": "89249.53000000",
+    "closePrice": "89298.91000000",
+    "maxPrice": "89356.47000000",
+    "minPrice": "89223.25000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769119800000",
+    "endTime": "1769120210000",
+    "openPrice": "89298.91000000",
+    "closePrice": "89490.70000000",
+    "maxPrice": "89566.00000000",
+    "minPrice": "89285.76000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769120100000",
+    "endTime": "1769120450000",
+    "openPrice": "89490.71000000",
+    "closePrice": "89359.49000000",
+    "maxPrice": "89520.00000000",
+    "minPrice": "89359.48000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769120400000",
+    "endTime": "1769120750000",
+    "openPrice": "89359.49000000",
+    "closePrice": "89400.01000000",
+    "maxPrice": "89410.51000000",
+    "minPrice": "89359.48000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769120700000",
+    "endTime": "1769121082000",
+    "openPrice": "89400.01000000",
+    "closePrice": "89422.77000000",
+    "maxPrice": "89483.24000000",
+    "minPrice": "89383.95000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769121000000",
+    "endTime": "1769121350000",
+    "openPrice": "89422.78000000",
+    "closePrice": "89262.16000000",
+    "maxPrice": "89422.78000000",
+    "minPrice": "89262.16000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769121300000",
+    "endTime": "1769121650000",
+    "openPrice": "89262.16000000",
+    "closePrice": "89236.13000000",
+    "maxPrice": "89295.36000000",
+    "minPrice": "89223.84000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769121600000",
+    "endTime": "1769121982000",
+    "openPrice": "89236.12000000",
+    "closePrice": "89265.50000000",
+    "maxPrice": "89279.94000000",
+    "minPrice": "89167.43000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769121900000",
+    "endTime": "1769122250000",
+    "openPrice": "89265.50000000",
+    "closePrice": "89343.50000000",
+    "maxPrice": "89359.49000000",
+    "minPrice": "89265.50000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769122200000",
+    "endTime": "1769122550000",
+    "openPrice": "89343.51000000",
+    "closePrice": "89375.53000000",
+    "maxPrice": "89375.54000000",
+    "minPrice": "89308.49000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769122500000",
+    "endTime": "1769122882000",
+    "openPrice": "89375.53000000",
+    "closePrice": "89346.99000000",
+    "maxPrice": "89375.53000000",
+    "minPrice": "89315.99000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769122800000",
+    "endTime": "1769123190000",
+    "openPrice": "89346.99000000",
+    "closePrice": "89181.36000000",
+    "maxPrice": "89375.78000000",
+    "minPrice": "89171.02000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769123100000",
+    "endTime": "1769123450000",
+    "openPrice": "89181.36000000",
+    "closePrice": "89292.40000000",
+    "maxPrice": "89292.40000000",
+    "minPrice": "89170.74000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769123400000",
+    "endTime": "1769123784000",
+    "openPrice": "89292.39000000",
+    "closePrice": "89302.40000000",
+    "maxPrice": "89304.00000000",
+    "minPrice": "89224.50000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769123700000",
+    "endTime": "1769124054000",
+    "openPrice": "89302.40000000",
+    "closePrice": "89342.99000000",
+    "maxPrice": "89395.08000000",
+    "minPrice": "89296.43000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769124000000",
+    "endTime": "1769124350000",
+    "openPrice": "89342.99000000",
+    "closePrice": "89431.16000000",
+    "maxPrice": "89431.17000000",
+    "minPrice": "89342.99000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769124300000",
+    "endTime": "1769124682000",
+    "openPrice": "89431.17000000",
+    "closePrice": "89440.00000000",
+    "maxPrice": "89509.97000000",
+    "minPrice": "89420.00000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769124600000",
+    "endTime": "1769124972000",
+    "openPrice": "89440.01000000",
+    "closePrice": "89579.81000000",
+    "maxPrice": "89583.62000000",
+    "minPrice": "89404.76000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769124900000",
+    "endTime": "1769125250000",
+    "openPrice": "89579.82000000",
+    "closePrice": "89520.08000000",
+    "maxPrice": "89579.82000000",
+    "minPrice": "89520.07000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769125200000",
+    "endTime": "1769125584000",
+    "openPrice": "89520.08000000",
+    "closePrice": "89505.70000000",
+    "maxPrice": "89520.08000000",
+    "minPrice": "89475.62000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769125500000",
+    "endTime": "1769125870000",
+    "openPrice": "89505.70000000",
+    "closePrice": "89546.70000000",
+    "maxPrice": "89546.70000000",
+    "minPrice": "89501.17000000",
+    "outcome": "up"
+  },
+  {
+    "startTime": "1769125800000",
+    "endTime": "1769126152000",
+    "openPrice": "89546.70000000",
+    "closePrice": "89538.82000000",
+    "maxPrice": "89552.63000000",
+    "minPrice": "89520.00000000",
+    "outcome": "down"
+  },
+  {
+    "startTime": "1769126100000",
+    "endTime": "1769126478000",
+    "openPrice": "89538.82000000",
+    "closePrice": "89559.67000000",
+    "maxPrice": "89559.68000000",
+    "minPrice": "89510.45000000",
+    "outcome": "up"
+  }
+]

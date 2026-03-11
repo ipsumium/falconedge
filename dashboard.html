@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FalconEdge Strategy Dashboard</title>
+    <!-- TailwindCSS for standard styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .card {
+            background-color: #1e293b;
+            border-color: #334155;
+        }
+
+        .positive {
+            color: #22c55e;
+        }
+
+        .negative {
+            color: #ef4444;
+        }
+    </style>
+</head>
+
+<body class="p-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-3xl font-bold text-white tracking-tight">FalconEdge Backtest Dashboard</h1>
+            <div class="flex items-center space-x-4">
+                <button onclick="loadData()"
+                    class="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded text-white font-medium transition">
+                    Refresh Data
+                </button>
+            </div>
+        </div>
+
+        <!-- Strategy Settings & KPI Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-6">
+            <div class="card p-4 rounded-lg border">
+                <p class="text-sm text-gray-400 font-medium">Net Profit</p>
+                <p id="kpi-pnl" class="text-2xl font-bold mt-1">--</p>
+            </div>
+            <div class="card p-4 rounded-lg border">
+                <p class="text-sm text-gray-400 font-medium">Win Rate</p>
+                <p id="kpi-winrate" class="text-2xl font-bold text-white mt-1">--%</p>
+            </div>
+            <div class="card p-4 rounded-lg border">
+                <p class="text-sm text-gray-400 font-medium">Total Trades</p>
+                <p id="kpi-trades" class="text-2xl font-bold text-white mt-1">--</p>
+                <p class="text-xs text-gray-500 mt-1"><span id="kpi-wins" class="positive"></span> / <span
+                        id="kpi-losses" class="negative"></span></p>
+            </div>
+            <div class="card p-4 rounded-lg border">
+                <p class="text-sm text-gray-400 font-medium">Max Drawdown</p>
+                <p id="kpi-dd" class="text-2xl font-bold negative mt-1">--%</p>
+            </div>
+            <div class="card p-4 rounded-lg border">
+                <p class="text-sm text-gray-400 font-medium">Max Losing Streak</p>
+                <p id="kpi-streak" class="text-2xl font-bold text-orange-400 mt-1">--</p>
+            </div>
+            <div class="card p-4 rounded-lg border">
+                <p class="text-sm text-gray-400 font-medium">Days Traded</p>
+                <p id="kpi-days" class="text-2xl font-bold text-white mt-1">--</p>
+            </div>
+            <div class="card p-4 rounded-lg border">
+                <p class="text-sm text-gray-400 font-medium">Avg Daily PnL</p>
+                <p id="kpi-daily-pnl" class="text-2xl font-bold mt-1">--</p>
+                <p class="text-xs text-gray-500 mt-1"><span id="kpi-daily-pct">--%</span> per day</p>
+            </div>
+        </div>
+
+        <!-- Explanation box -->
+        <div id="explanation-box" class="card p-4 mb-6 rounded-lg border hidden text-gray-300">
+            <h3 class="text-lg font-bold text-white mb-2" id="expl-title">Strategy Description</h3>
+            <p id="expl-text" class="whitespace-pre-wrap"></p>
+        </div>
+
+        <!-- Parameter overview -->
+        <div class="card p-4 mb-6 rounded-lg border grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-gray-300">
+            <div><span class="font-medium text-gray-500">Signal Params:</span> <span id="param-trend">--</span></div>
+            <div><span class="font-medium text-gray-500">Max Loss Streak Limit:</span> <span id="param-maxl">--</span>
+            </div>
+            <div><span class="font-medium text-gray-500">Base Budget:</span> $<span id="param-base">--</span></div>
+            <div><span class="font-medium text-gray-500">Starting Capital:</span> $<span id="param-capital">--</span>
+            </div>
+        </div>
+
+        <!-- Equity & Drawdown Charts -->
+        <div class="grid grid-cols-1 gap-6 mb-6">
+            <div class="card p-4 rounded-lg border" style="height: 350px;">
+                <canvas id="equityChart"></canvas>
+            </div>
+            <div class="card p-4 rounded-lg border" style="height: 200px;">
+                <canvas id="drawdownChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Trade Log Table -->
+        <div class="card rounded-lg border overflow-hidden">
+            <div class="p-4 border-b border-gray-700 font-medium text-white flex justify-between items-center">
+                <h3>Trade Log</h3>
+            </div>
+            <div class="overflow-x-auto max-h-[500px]">
+                <table class="w-full text-sm text-left text-gray-300">
+                    <thead class="text-xs uppercase bg-gray-800 text-gray-400 sticky top-0">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Time/Date (UTC)</th>
+                            <th scope="col" class="px-6 py-3">Direction</th>
+                            <th scope="col" class="px-6 py-3">Shares</th>
+                            <th scope="col" class="px-6 py-3">Escalation Stage</th>
+                            <th scope="col" class="px-6 py-3">Forced Exit (99c)</th>
+                            <th scope="col" class="px-6 py-3 text-right">Net PnL</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trade-table-body" class="divide-y divide-gray-700">
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let equityChartInstance = null;
+        let drawdownChartInstance = null;
+
+        async function loadData() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const configId = params.get('config');
+                let url = 'backtest_results.json?' + new Date().getTime();
+
+                if (configId) {
+                    url = 'discovery_details/' + configId + '.json?' + new Date().getTime();
+                }
+
+                const response = await fetch(url);
+                if (!response.ok) throw new Error("JSON not found or server not running");
+
+                const data = await response.json();
+                updateDashboard(data, !!configId);
+            } catch (err) {
+                console.error("Failed to load backtest data:", err);
+                alert("Could not load reporting json.");
+            }
+        }
+
+        function updateDashboard(data, isDiscovery) {
+            let summary = data.summary ? data.summary : data;
+
+            let pnl = summary.net_profit;
+            let win_rate = summary.win_rate_pct || summary.win_rate;
+            let total_trades = summary.total_trades;
+            let drawdown = summary.max_drawdown_pct || summary.max_dd;
+            let streak = summary.max_consecutive_losses !== undefined ? summary.max_consecutive_losses : "--";
+            let tradesList = data.trades || summary.trades || [];
+            let wins = summary.wins !== undefined ? summary.wins : tradesList.filter(t => t.pnl > 0).length;
+            let losses = summary.losses !== undefined ? summary.losses : tradesList.filter(t => t.pnl <= 0).length;
+
+            if (data.explanation || summary.explanation) {
+                document.getElementById('explanation-box').classList.remove('hidden');
+                document.getElementById('expl-title').textContent = summary.signal ? `Strategy: ${summary.signal} + ${summary.sizing}` : 'Strategy Description';
+                document.getElementById('expl-text').textContent = data.explanation || summary.explanation;
+            }
+
+            // Update KPIs
+            const pnlEl = document.getElementById('kpi-pnl');
+            pnlEl.textContent = `$${pnl.toFixed(2)}`;
+            pnlEl.className = pnl >= 0 ? 'text-2xl font-bold mt-1 positive' : 'text-2xl font-bold mt-1 negative';
+
+            document.getElementById('kpi-winrate').textContent = `${Number(win_rate).toFixed(2)}%`;
+            document.getElementById('kpi-trades').textContent = total_trades;
+            document.getElementById('kpi-wins').textContent = `${wins}W`;
+            document.getElementById('kpi-losses').textContent = `${losses}L`;
+            document.getElementById('kpi-dd').textContent = `${drawdown.toFixed(2)}%`;
+            document.getElementById('kpi-streak').textContent = streak;
+
+            // Update Params
+            let trend_val = summary.signal_params ? Object.entries(summary.signal_params).map(([k, v]) => `${k}=${v}`).join(', ') : (summary.strategy_params ? summary.strategy_params.trend_window : "--");
+            let maxl_val = summary.max_series_losses ? summary.max_series_losses : (summary.strategy_params ? summary.strategy_params.max_series_losses : "--");
+            let exec_params = data.execution_params || summary.execution_params;
+
+            // Backup for Walk-Forward flat structures
+            if (!exec_params && summary.initial_capital) {
+                exec_params = {
+                    base_trade_budget: 5.0, // Used fixed 5.0 base
+                    initial_capital: summary.initial_capital
+                };
+            }
+
+            document.getElementById('param-trend').textContent = trend_val;
+            document.getElementById('param-maxl').textContent = maxl_val;
+
+            if (exec_params) {
+                document.getElementById('param-base').textContent = exec_params.base_trade_budget;
+                document.getElementById('param-capital').textContent = exec_params.initial_capital;
+            } else {
+                document.getElementById('param-base').textContent = "--";
+                document.getElementById('param-capital').textContent = "--";
+            }
+
+            // Calculate Days and Daily PnL
+            let daysTraded = 0;
+            let avgDailyPnl = 0;
+            let avgDailyPct = 0;
+
+            if (summary.equity_curve && summary.equity_curve.length > 1) {
+                const firstDate = new Date(summary.equity_curve[0].time);
+                const lastDate = new Date(summary.equity_curve[summary.equity_curve.length - 1].time);
+                const diffTime = Math.abs(lastDate - firstDate);
+                daysTraded = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) || 1;
+
+                avgDailyPnl = pnl / daysTraded;
+
+                const capital = exec_params ? exec_params.initial_capital : 500;
+                avgDailyPct = (avgDailyPnl / capital) * 100;
+            }
+
+            document.getElementById('kpi-days').textContent = daysTraded;
+
+            const pnlDailyEl = document.getElementById('kpi-daily-pnl');
+            pnlDailyEl.textContent = `$${avgDailyPnl.toFixed(2)}`;
+            pnlDailyEl.className = avgDailyPnl >= 0 ? 'text-2xl font-bold mt-1 positive' : 'text-2xl font-bold mt-1 negative';
+
+            const pctDailyEl = document.getElementById('kpi-daily-pct');
+            pctDailyEl.textContent = `${avgDailyPct >= 0 ? '+' : ''}${avgDailyPct.toFixed(2)}%`;
+            pctDailyEl.className = avgDailyPct >= 0 ? 'positive' : 'negative';
+
+            // Extract chart series
+            const labels = [];
+            const equityData = [];
+            const ddData = [];
+
+            summary.equity_curve.forEach(pt => {
+                const date = new Date(pt.time);
+                // Formatting nicely MM/DD HH:mm
+                labels.push(`${date.getMonth() + 1}/${date.getDate()} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`);
+                equityData.push(pt.equity);
+                ddData.push(-pt.drawdown); // Drawdown typically displayed as negative
+            });
+
+            // Update Charts
+            renderCharts(labels, equityData, ddData);
+
+            // Populate Table (Reversed to show newest first)
+            const tbody = document.getElementById('trade-table-body');
+            tbody.innerHTML = '';
+
+            if (tradesList.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="px-6 py-4 text-center text-gray-500">Trade log details are not saved for walk-forward mass discovery to save space.</td></tr>';
+            } else {
+                tradesList.slice().reverse().forEach((trade, i) => {
+                    const tr = document.createElement('tr');
+                    tr.className = "hover:bg-gray-800 transition";
+
+                    const timeStr = new Date(trade.time).toLocaleString();
+                    const pnlClass = trade.pnl >= 0 ? 'positive font-medium' : 'negative font-medium';
+                    const pnlPrefix = trade.pnl >= 0 ? '+' : '';
+
+                    tr.innerHTML = `
+                    <td class="px-6 py-3 whitespace-nowrap text-gray-400">${timeStr}</td>
+                    <td class="px-6 py-3 uppercase font-bold text-${trade.direction === 'up' ? 'green' : 'red'}-500">${trade.direction}</td>
+                    <td class="px-6 py-3">${trade.size_shares.toFixed(2)}</td>
+                    <td class="px-6 py-3">Step ${trade.series_step}</td>
+                    <td class="px-6 py-3">${trade.forced_exit ? '<span class="px-2 py-1 bg-blue-900/50 text-blue-400 rounded text-xs border border-blue-800">FILLED 99c</span>' : '<span class="text-gray-600">-</span>'}</td>
+                    <td class="px-6 py-3 text-right ${pnlClass}">${pnlPrefix}$${trade.pnl.toFixed(2)}</td>
+                `;
+                    tbody.appendChild(tr);
+                });
+            }
+        } // Close updateDashboard here
+
+        function renderCharts(labels, equity, drawdowns) {
+            Chart.defaults.color = '#94a3b8';
+            Chart.defaults.font.family = 'Inter';
+
+            // Equity Chart
+            const ctxEq = document.getElementById('equityChart').getContext('2d');
+            if (equityChartInstance) equityChartInstance.destroy();
+
+            equityChartInstance = new Chart(ctxEq, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Portfolio Equity ($)',
+                        data: equity,
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true,
+                        tension: 0.1,
+                        pointRadius: 0,
+                        pointHoverRadius: 4,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { intersect: false, mode: 'index' },
+                    plugins: {
+                        legend: { display: true },
+                        tooltip: { backgroundColor: 'rgba(15, 23, 42, 0.9)', titleColor: '#fff', padding: 10 }
+                    },
+                    scales: {
+                        x: { display: false },
+                        y: { grid: { color: '#334155' } }
+                    }
+                }
+            });
+
+            // Drawdown Chart
+            const ctxDd = document.getElementById('drawdownChart').getContext('2d');
+            if (drawdownChartInstance) drawdownChartInstance.destroy();
+
+            drawdownChartInstance = new Chart(ctxDd, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Drawdown (%)',
+                        data: drawdowns,
+                        borderColor: '#ef4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.2)',
+                        fill: true,
+                        tension: 0,
+                        pointRadius: 0,
+                        borderWidth: 1.5,
+                        stepped: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { intersect: false, mode: 'index' },
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { display: false } },
+                        y: {
+                            grid: { color: '#334155' },
+                            max: 0,
+                            ticks: { callback: function (val) { return val + '%'; } }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Auto load on start
+        window.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+
+</html>
