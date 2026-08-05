@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FalconEdge Auto-Discovery Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* ==== GitHub Dark (Primer-inspired) theme ==== */
+        :root {
+            --gh-bg: #0d1117;
+            --gh-canvas-subtle: #161b22;
+            --gh-overlay: #1c2128;
+            --gh-border: #30363d;
+            --gh-border-muted: #21262d;
+            --gh-fg: #e6edf3;
+            --gh-fg-muted: #7d8590;
+            --gh-accent: #2f81f7;
+            --gh-accent-fg: #58a6ff;
+            --gh-success: #3fb950;
+            --gh-danger: #f85149;
+            --gh-danger-soft: #ff7b72;
+            --gh-attention: #d29922;
+            --gh-btn: #21262d;
+            --gh-btn-hover: #30363d;
+            --gh-btn-primary: #238636;
+            --gh-btn-primary-hover: #2ea043;
+            --gh-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+        }
+
+        body {
+            background-color: var(--gh-bg);
+            color: var(--gh-fg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+        }
+
+        td,
+        .num {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .card {
+            background-color: var(--gh-canvas-subtle);
+            border-color: var(--gh-border);
+        }
+
+        .positive {
+            color: var(--gh-success);
+        }
+
+        .negative {
+            color: var(--gh-danger);
+        }
+
+        .row-expanded {
+            background-color: var(--gh-overlay) !important;
+        }
+
+        /* GitHub counter label */
+        .gh-counter {
+            display: inline-block;
+            padding: 0 7px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 18px;
+            border-radius: 2em;
+            background-color: var(--gh-btn);
+            border: 1px solid var(--gh-border-muted);
+            color: var(--gh-fg);
+        }
+
+        /* GitHub topic-tag badge */
+        .gh-badge {
+            display: inline-block;
+            padding: 0 7px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 18px;
+            border-radius: 2em;
+            background-color: rgba(56, 139, 253, 0.15);
+            color: var(--gh-accent-fg);
+        }
+
+        .gh-btn {
+            background-color: var(--gh-btn);
+            border: 1px solid var(--gh-border);
+            color: var(--gh-fg);
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color .1s;
+        }
+
+        .gh-btn:hover {
+            background-color: var(--gh-btn-hover);
+            border-color: #8b949e;
+        }
+
+        .gh-btn-primary {
+            background-color: var(--gh-btn-primary);
+            border: 1px solid rgba(240, 246, 252, 0.1);
+            color: #ffffff;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color .1s;
+        }
+
+        .gh-btn-primary:hover {
+            background-color: var(--gh-btn-primary-hover);
+        }
+
+        /* Sidebar (FreqUI-inspired) */
+        .side-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gh-fg-muted);
+            padding: 4px 8px;
+        }
+
+        .side-link {
+            display: block;
+            padding: 5px 8px;
+            border-radius: 6px;
+            color: var(--gh-fg);
+            text-decoration: none;
+        }
+
+        .side-link:hover {
+            background-color: var(--gh-btn-hover);
+        }
+
+        .side-link.active {
+            background-color: rgba(56, 139, 253, 0.15);
+            color: var(--gh-accent-fg);
+            font-weight: 600;
+        }
+
+        details.month-group summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 4px 8px;
+            border-radius: 6px;
+            color: var(--gh-fg-muted);
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            user-select: none;
+        }
+
+        details.month-group summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.month-group summary::before {
+            content: "▸ ";
+        }
+
+        details.month-group[open] summary::before {
+            content: "▾ ";
+        }
+
+        details.month-group summary:hover {
+            background-color: var(--gh-btn);
+            color: var(--gh-fg);
+        }
+
+        /* Metric cards (FreqUI backtest-panel style) */
+        .metric-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gh-fg-muted);
+        }
+
+        .metric-value {
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 4px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .metric-sub {
+            font-size: 11px;
+            color: var(--gh-fg-muted);
+            font-family: var(--gh-mono);
+            margin-top: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Fit table to viewport — no horizontal scroll */
+        #leaderboard-table {
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        #leaderboard-table td,
+        #leaderboard-table th {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .id-cell {
+            white-space: nowrap;
+        }
+
+        .pnl-bars {
+            display: inline-flex;
+            align-items: flex-end;
+            gap: 1px;
+            height: 18px;
+            max-width: 220px;
+            overflow: hidden;
+            vertical-align: middle;
+        }
+
+        .pnl-bars span {
+            flex: 1 1 0;
+            min-width: 1px;
+            border-radius: 1px;
+        }
+
+        /* Map the existing Tailwind utility classes onto the GitHub palette */
+        .bg-gray-800 {
+            background-color: var(--gh-overlay) !important;
+        }
+
+        .bg-gray-800\/50 {
+            background-color: rgba(22, 27, 34, 0.7) !important;
+        }
+
+        .bg-gray-900 {
+            background-color: #010409 !important;
+        }
+
+        .bg-gray-700 {
+            background-color: var(--gh-btn) !important;
+        }
+
+        .hover\:bg-gray-800:hover {
+            background-color: rgba(33, 38, 45, 0.65) !important;
+        }
+
+        .hover\:bg-gray-600:hover {
+            background-color: var(--gh-btn-hover) !important;
+        }
+
+        .border-gray-700,
+        .border-gray-600 {
+            border-color: var(--gh-border) !important;
+        }
+
+        .divide-gray-700> :not([hidden])~ :not([hidden]) {
+            border-color: var(--gh-border-muted) !important;
+        }
+
+        .text-gray-300 {
+            color: #c9d1d9 !important;
+        }
+
+        .text-gray-400 {
+            color: var(--gh-fg-muted) !important;
+        }
+
+        .text-gray-500 {
+            color: #6e7681 !important;
+        }
+
+        .text-green-400 {
+            color: var(--gh-success) !important;
+        }
+
+        .text-red-400 {
+            color: var(--gh-danger) !important;
+        }
+
+        .text-red-300 {
+            color: var(--gh-danger-soft) !important;
+        }
+
+        .text-blue-400 {
+            color: var(--gh-accent-fg) !important;
+        }
+
+        .text-cyan-400 {
+            color: #39c5cf !important;
+        }
+
+        .text-orange-400 {
+            color: var(--gh-attention) !important;
+        }
+
+        .text-yellow-400 {
+            color: #e3b341 !important;
+        }
+
+        input {
+            background-color: var(--gh-bg) !important;
+            border-color: var(--gh-border) !important;
+            color: var(--gh-fg) !important;
+            border-radius: 6px !important;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--gh-accent) !important;
+            box-shadow: 0 0 0 3px rgba(47, 129, 247, 0.3);
+        }
+
+        thead {
+            background-color: var(--gh-canvas-subtle) !important;
+            border-bottom: 1px solid var(--gh-border);
+            letter-spacing: 0.04em;
+        }
+
+        /* Sorted column styling */
+        th.sortable:hover {
+            color: #fff;
+            cursor: pointer;
+        }
+
+        th.sorted-asc::after {
+            content: " ↑";
+            color: var(--gh-accent-fg);
+        }
+
+        th.sorted-desc::after {
+            content: " ↓";
+            color: var(--gh-accent-fg);
+        }
+
+        .chart-container-hidden {
+            display: none;
+        }
+
+        .chart-container-visible {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex min-h-screen">
+        <!-- Sidebar (FreqUI-inspired navigation) -->
+        <aside class="w-60 shrink-0 border-r flex flex-col sticky top-0 h-screen"
+            style="background-color: var(--gh-canvas-subtle); border-color: var(--gh-border);">
+            <div class="p-4 border-b" style="border-color: var(--gh-border);">
+                <div class="font-semibold text-white">⚡ FalconEdge</div>
+                <div class="text-xs mt-0.5" style="color: var(--gh-fg-muted);">strategy leaderboard</div>
+            </div>
+            <div class="p-3 pb-1">
+                <span class="side-label">Views</span>
+                <a href="?source=discovery_results.json" data-source="discovery_results.json"
+                    class="side-link day-link">📈 All-Time Leaderboard</a>
+                <a href="?source=live_results_cumulative.json" data-source="live_results_cumulative.json"
+                    class="side-link day-link">📊 Cumulative</a>
+            </div>
+            <div class="px-3 pt-2 pb-1 flex items-center justify-between">
+                <span class="side-label" style="padding-left: 8px;">Live tests</span>
+                <span id="day-count" class="gh-counter">--</span>
+            </div>
+            <div id="day-nav" class="flex-1 overflow-y-auto px-2 pb-3 text-sm"></div>
+            <div class="p-3 border-t" style="border-color: var(--gh-border);">
+                <button onclick="loadData()" class="gh-btn-primary w-full px-3 py-1.5 text-sm">⟳ Refresh
+                    Leaderboard</button>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="flex-1 min-w-0 p-6">
+            <div class="mb-4 pb-4 border-b" style="border-color: var(--gh-border);">
+                <h1 id="page-title" class="text-2xl font-semibold text-white tracking-tight">Strategy Discovery
+                    Leaderboard
+                </h1>
+                <p class="text-sm mt-1" style="color: var(--gh-fg-muted);">Generated: <span id="gen-date">--</span> ·
+                    Configurations Tested:
+                    <span id="total-tested" class="gh-counter">--</span>
+                </p>
+            </div>
+
+        <!-- Metrics strip (FreqUI backtest-panel style) -->
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-3 mb-4">
+            <div class="card border rounded-md p-3">
+                <div class="metric-label">Strategies shown</div>
+                <div id="stat-shown" class="metric-value">--</div>
+            </div>
+            <div class="card border rounded-md p-3">
+                <div class="metric-label">Profitable</div>
+                <div id="stat-profitable" class="metric-value positive">--</div>
+            </div>
+            <div class="card border rounded-md p-3">
+                <div class="metric-label">Top net profit</div>
+                <div id="stat-best" class="metric-value positive">--</div>
+                <div id="stat-best-id" class="metric-sub">--</div>
+            </div>
+            <div class="card border rounded-md p-3">
+                <div class="metric-label">Avg $/day (top)</div>
+                <div id="stat-avgday" class="metric-value">--</div>
+            </div>
+            <div class="card border rounded-md p-3">
+                <div class="metric-label">Max DD (top)</div>
+                <div id="stat-topdd" class="metric-value negative">--</div>
+            </div>
+            <div class="card border rounded-md p-3">
+                <div class="metric-label">Median net profit</div>
+                <div id="stat-median" class="metric-value">--</div>
+            </div>
+        </div>
+
+        <!-- Top 5 cumulative profit chart (shown only on Cumulative view) -->
+        <div id="top5-card" class="card border rounded-md p-4 mb-4" style="display:none;">
+            <div class="metric-label mb-2">Cumulative profit — Top 5 strategies</div>
+            <div style="height: 300px;"><canvas id="top5-chart"></canvas></div>
+        </div>
+
+        <!-- Filters -->
+        <div class="card p-4 rounded-lg border mb-6 flex gap-4 text-sm items-center">
+            <span class="font-bold text-gray-300">Filters:</span>
+
+            <label class="flex items-center space-x-2 text-gray-400">
+                <span>Min Trades:</span>
+                <input type="number" id="filter-trades" value="0"
+                    class="w-16 bg-gray-800 border border-gray-600 rounded px-2 py-1 text-white">
+            </label>
+
+            <label class="flex items-center space-x-2 text-gray-400">
+                <span>Rule/Signal:</span>
+                <input type="text" id="filter-strategy" placeholder="e.g. Markov"
+                    class="w-32 bg-gray-800 border border-gray-600 rounded px-2 py-1 text-white placeholder-gray-500">
+            </label>
+
+            <label class="flex items-center space-x-2 text-gray-400">
+                <span>Min Win Rate (%):</span>
+                <input type="number" id="filter-winrate" value="0"
+                    class="w-16 bg-gray-800 border border-gray-600 rounded px-2 py-1 text-white">
+            </label>
+
+            <label class="flex items-center space-x-2 text-gray-400">
+                <span>Max Drawdown (%):</span>
+                <input type="number" id="filter-dd" value="100"
+                    class="w-16 bg-gray-800 border border-gray-600 rounded px-2 py-1 text-white">
+            </label>
+
+            <label class="flex items-center space-x-2 text-gray-400">
+                <span>Min Profit ($):</span>
+                <input type="number" id="filter-profit" value="-10000"
+                    class="w-20 bg-gray-800 border border-gray-600 rounded px-2 py-1 text-white">
+            </label>
+
+            <button onclick="applyFilters()" class="gh-btn px-3 py-1 text-sm ml-auto">Apply</button>
+        </div>
+
+        <!-- Leaderboard Table -->
+        <div class="card rounded-lg border overflow-hidden">
+            <div class="overflow-y-auto max-h-[800px]">
+                <table class="w-full text-sm text-left text-gray-300" id="leaderboard-table">
+                    <colgroup>
+                        <col style="width: 34px">
+                        <col style="width: 118px">
+                        <col>
+                        <col style="width: 105px">
+                        <col style="width: 68px">
+                        <col style="width: 62px">
+                        <col style="width: 58px">
+                        <col style="width: 92px">
+                        <col style="width: 84px">
+                    </colgroup>
+                    <thead class="text-xs uppercase bg-gray-800 text-gray-400 sticky top-0 z-10">
+                        <tr>
+                            <th scope="col" class="px-2 py-3">#</th>
+                            <th scope="col" class="px-2 py-3">Config ID</th>
+                            <th scope="col" class="px-3 py-3">Signal (Param)</th>
+                            <th scope="col" class="px-3 py-3">Sizing Rule</th>
+                            <th scope="col" class="px-3 py-3 cursor-pointer sortable" data-sort="win_rate">Win Rate</th>
+                            <th scope="col" class="px-3 py-3 cursor-pointer sortable" data-sort="max_dd">Max DD</th>
+                            <th scope="col" class="px-3 py-3 text-center cursor-pointer sortable"
+                                data-sort="max_series_losses">Max Streak</th>
+                            <th scope="col" class="px-3 py-3 text-right cursor-pointer sortable" data-sort="net_profit">
+                                Net Profit ($-)</th>
+                            <th scope="col"
+                                class="px-3 py-3 text-right cursor-pointer sortable group group-hover:bg-gray-700"
+                                data-sort="calmar">
+                                Risk-Adj (Calmar) &darr;</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body" class="divide-y divide-gray-700">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </main>
+    </div>
+
+    <!-- Hidden template for the expanded chart row -->
+    <template id="chart-row-template">
+        <tr class="chart-row">
+            <td colspan="9" class="p-4 bg-gray-900 border-b border-gray-700">
+                <div class="flex justify-between items-center mb-3 flex-wrap gap-2">
+                    <div>
+                        <span class="text-gray-300 text-sm font-medium">Quick Equity View</span>
+                        <span class="trade-stats text-sm ml-3"></span>
+                    </div>
+                    <a href="#" target="_blank"
+                        class="detail-link gh-btn-primary px-4 py-1.5 text-xs font-bold shadow">Open
+                        Full Stats Page</a>
+                </div>
+                <div class="trade-bars-row mb-3"></div>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="bg-gray-800 p-4 rounded" style="height: 250px;">
+                        <canvas class="eq-chart"></canvas>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded" style="height: 250px;">
+                        <canvas class="dd-chart"></canvas>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </template>
+
+    <script>
+        let fullData = [];
+        let filteredData = [];
+        let currentSort = { col: 'calmar', asc: false };
+        let activeCharts = {}; // Track chart instances to destroy them
+
+        const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        async function buildDayNav() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const activeSource = urlParams.get('source') || 'discovery_results.json';
+            const nav = document.getElementById('day-nav');
+            if (!nav) return;
+
+            let days = [];
+            try {
+                const resp = await fetch('live_results_index.json?' + new Date().getTime());
+                if (resp.ok) days = (await resp.json()).days || [];
+            } catch (err) {
+                console.warn('No day index available', err);
+            }
+
+            // Group days by month (newest first), collapsible like FreqUI side panels
+            const byMonth = {};
+            days.forEach(day => {
+                const mk = day.slice(0, 7); // "2026-08"
+                (byMonth[mk] = byMonth[mk] || []).push(day);
+            });
+            const months = Object.keys(byMonth).sort().reverse();
+
+            document.getElementById('day-count').textContent = days.length;
+
+            nav.innerHTML = months.map((mk, i) => {
+                const [y, m] = mk.split('-');
+                const monthLabel = `${MONTHS_SHORT[parseInt(m, 10) - 1]} ${y}`;
+                const links = byMonth[mk].sort().reverse().map(day => {
+                    const d = parseInt(day.split('-')[2], 10);
+                    const source = `live_results_${day}.json`;
+                    return `<a href="?source=${source}" data-source="${source}" class="side-link day-link" style="padding-left:20px;">${monthLabel.split(' ')[0]} ${d}</a>`;
+                }).join('');
+                return `<details class="month-group" ${i === 0 ? 'open' : ''}><summary>${monthLabel}</summary>${links}</details>`;
+            }).join('');
+
+            // Highlight the currently loaded source
+            document.querySelectorAll('.day-link').forEach(a => {
+                if (a.dataset.source === activeSource) {
+                    a.classList.add('active');
+                }
+            });
+        }
+
+        buildDayNav();
+
+        // Top-5 cumulative profit overlay chart (Cumulative view only)
+        const TOP5_COLORS = ['#2f81f7', '#3fb950', '#d29922', '#a371f7', '#f778ba'];
+
+        function renderTop5Chart(sourceFile) {
+            const card = document.getElementById('top5-card');
+            if (!card) return;
+
+            if (!sourceFile.includes('cumulative') || !fullData.length || !fullData[0].equity_curve) {
+                card.style.display = 'none';
+                return;
+            }
+
+            const top5 = [...fullData].sort((a, b) => b.net_profit - a.net_profit).slice(0, 5);
+            card.style.display = 'block';
+
+            const labels = top5[0].equity_curve.map(pt => pt.time.slice(5, 10));
+            const datasets = top5.map((s, i) => ({
+                label: `${s.id.replace(/^cumulative_/, '')} ($${s.net_profit.toFixed(0)})`,
+                data: s.equity_curve.map(pt => pt.equity),
+                borderColor: TOP5_COLORS[i],
+                backgroundColor: 'transparent',
+                pointRadius: 0,
+                borderWidth: 2,
+                tension: 0.15
+            }));
+
+            if (activeCharts['top5']) activeCharts['top5'].destroy();
+            const ctx = document.getElementById('top5-chart').getContext('2d');
+            activeCharts['top5'] = new Chart(ctx, {
+                type: 'line',
+                data: { labels, datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    scales: { x: { ticks: { maxTicksLimit: 12 } } },
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12 } } }
+                }
+            });
+        }
+
+        async function loadData() {
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const sourceFile = urlParams.get('source') || 'discovery_results.json';
+
+                const response = await fetch(sourceFile + '?' + new Date().getTime());
+                if (!response.ok) throw new Error("File not found");
+                const blob = await response.json();
+
+                if (blob.title) {
+                    document.getElementById('page-title').textContent = blob.title;
+                }
+
+                document.getElementById('gen-date').textContent = new Date(blob.generated_at).toLocaleString();
+                document.getElementById('total-tested').textContent = blob.total_tested;
+
+                fullData = blob.strategies;
+                applyFilters();
+                renderTop5Chart(sourceFile);
+            } catch (err) {
+                console.error(err);
+                alert("Could not load discovery_results.json.");
+            }
+        }
+
+        function applyFilters() {
+            const minTrades = parseInt(document.getElementById('filter-trades').value) || 0;
+            const minWr = parseFloat(document.getElementById('filter-winrate').value) || 0;
+            const maxDd = parseFloat(document.getElementById('filter-dd').value) || 100;
+            const minProfit = parseFloat(document.getElementById('filter-profit').value) || -10000;
+            const stratStr = document.getElementById('filter-strategy').value.toLowerCase().trim();
+
+            filteredData = fullData.filter(s => {
+                const matchesTrades = s.total_trades >= minTrades;
+                const matchesWr = s.win_rate >= minWr;
+                const matchesDd = s.max_dd <= maxDd;
+                const matchesProfit = s.net_profit >= minProfit;
+                const matchesStrat = stratStr === '' ||
+                    s.signal.toLowerCase().includes(stratStr) ||
+                    s.sizing.toLowerCase().includes(stratStr);
+
+                return matchesTrades && matchesWr && matchesDd && matchesProfit && matchesStrat;
+            });
+            sortData();
+        }
+
+        function sortData() {
+            filteredData.sort((a, b) => {
+                let valA = a[currentSort.col];
+                let valB = b[currentSort.col];
+
+                // Rank is just the array index essentially, so sort by calmar instead
+                if (currentSort.col === 'rank') { valA = a.calmar; valB = b.calmar; }
+
+                if (valA < valB) return currentSort.asc ? -1 : 1;
+                if (valA > valB) return currentSort.asc ? 1 : -1;
+                return 0;
+            });
+            renderTable();
+        }
+
+        function toggleSort(col) {
+            if (currentSort.col === col) {
+                currentSort.asc = !currentSort.asc;
+            } else {
+                currentSort.col = col;
+                currentSort.asc = false; // default desc for new col
+            }
+
+            // Update UI
+            document.querySelectorAll('th.sortable').forEach(th => {
+                th.classList.remove('sorted-asc', 'sorted-desc', 'text-white');
+                if (th.dataset.sort === col) {
+                    th.classList.add(currentSort.asc ? 'sorted-asc' : 'sorted-desc', 'text-white');
+                }
+            });
+
+            sortData();
+        }
+
+        document.querySelectorAll('th.sortable').forEach(th => {
+            th.addEventListener('click', () => toggleSort(th.dataset.sort));
+        });
+
+        function renderTable() {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = '';
+
+            // Update metrics strip (FreqUI backtest-panel style)
+            const shown = filteredData.length;
+            const profitable = filteredData.filter(s => s.net_profit > 0).length;
+            const pnls = filteredData.map(s => s.net_profit).sort((a, b) => a - b);
+            const median = pnls.length ? (pnls.length % 2 ? pnls[(pnls.length - 1) / 2] : (pnls[pnls.length / 2 - 1] + pnls[pnls.length / 2]) / 2) : 0;
+            const leader = filteredData.length ? filteredData.reduce((a, b) => (b.net_profit > a.net_profit ? b : a)) : null;
+
+            document.getElementById('stat-shown').textContent = `${shown} / ${fullData.length}`;
+            document.getElementById('stat-profitable').textContent = `${profitable} (${shown ? (profitable / shown * 100).toFixed(0) : 0}%)`;
+
+            const medEl = document.getElementById('stat-median');
+            medEl.textContent = `$${median.toFixed(2)}`;
+            medEl.className = `metric-value ${median >= 0 ? 'positive' : 'negative'}`;
+
+            if (leader) {
+                document.getElementById('stat-best').textContent = `$${leader.net_profit.toFixed(2)}`;
+                document.getElementById('stat-best-id').textContent = leader.id.replace(/^cumulative_/, '').replace(/^live_\d{4}-\d{2}-\d{2}_/, '');
+                const daysActive = leader.days_traded || 1;
+                const avgDay = leader.net_profit / daysActive;
+                const avgEl = document.getElementById('stat-avgday');
+                avgEl.textContent = `$${avgDay.toFixed(2)}`;
+                avgEl.className = `metric-value ${avgDay >= 0 ? 'positive' : 'negative'}`;
+                document.getElementById('stat-topdd').textContent = `${leader.max_dd.toFixed(1)}%`;
+            } else {
+                document.getElementById('stat-best').textContent = '--';
+                document.getElementById('stat-best-id').textContent = '--';
+                document.getElementById('stat-avgday').textContent = '--';
+                document.getElementById('stat-topdd').textContent = '--';
+            }
+
+            // Cleanup old charts
+            Object.values(activeCharts).forEach(c => c.destroy());
+            activeCharts = {};
+
+            filteredData.forEach((strat, index) => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-gray-800 transition cursor-pointer main-row";
+                tr.dataset.id = strat.id;
+
+                // Format Signal Params (GitHub topic-tag badges)
+                const sigBadges = Object.entries(strat.signal_params)
+                    .map(([k, v]) => `<span class="gh-badge">${k}=${v}</span>`)
+                    .join('');
+                const sigStr = `<div class="font-bold text-gray-200 mb-1">${strat.signal}</div><div class="text-[10px] flex flex-wrap gap-1">${sigBadges}</div>`;
+
+                // Format Sizing Params
+                const sizeStr = `<div class="font-medium text-gray-300">${strat.sizing}</div><div class="text-[10px] text-orange-400 mt-1 opacity-80">(Max L: ${strat.max_series_losses})</div>`;
+
+                const pnlClass = strat.net_profit >= 0 ? 'positive font-medium' : 'negative';
+                const calmarClass = strat.calmar > 0 ? 'positive font-bold' : 'negative';
+
+                tr.innerHTML = `
+                    <td class="px-2 py-2 text-gray-500 text-xs">#${index + 1}</td>
+                    <td class="px-2 py-2 text-[10px] text-cyan-400 font-mono id-cell" title="${strat.id}">${strat.id}</td>
+                    <td class="px-3 py-2 text-sm">${sigStr}</td>
+                    <td class="px-3 py-2 text-sm">${sizeStr}</td>
+                    <td class="px-3 py-2 font-medium text-sm whitespace-nowrap ${strat.win_rate >= 50 ? 'text-green-400' : 'text-red-400'}">${strat.win_rate.toFixed(2)}%</td>
+                    <td class="px-3 py-2 font-medium text-red-300 text-sm whitespace-nowrap">${strat.max_dd.toFixed(1)}%</td>
+                    <td class="px-3 py-2 text-center text-orange-400 font-bold text-sm whitespace-nowrap">${strat.max_series_losses}</td>
+                    <td class="px-3 py-2 text-right ${pnlClass} text-sm whitespace-nowrap">$${strat.net_profit.toFixed(2)}</td>
+                    <td class="px-3 py-2 text-right ${calmarClass} text-sm whitespace-nowrap">${strat.calmar.toFixed(3)}</td>
+                `;
+
+                tr.addEventListener('click', () => toggleRowExpansion(tr, strat));
+                tbody.appendChild(tr);
+            });
+        }
+
+        function toggleRowExpansion(row, stratData) {
+            const isExpanded = row.classList.contains('row-expanded');
+
+            // Collapse all others
+            document.querySelectorAll('.main-row').forEach(r => r.classList.remove('row-expanded'));
+            document.querySelectorAll('.chart-row').forEach(r => r.remove());
+
+            if (isExpanded) {
+                // Already expanded, we just collapsed it
+                return;
+            }
+
+            // Expand this one
+            row.classList.add('row-expanded');
+
+            const template = document.getElementById('chart-row-template');
+            const clone = template.content.cloneNode(true);
+            const chartRow = clone.querySelector('tr');
+
+            // Insert exactly after the clicked row
+            row.parentNode.insertBefore(chartRow, row.nextSibling);
+
+            // Set Detail Link
+            const detailLink = chartRow.querySelector('.detail-link');
+            detailLink.href = `dashboard.html?config=${stratData.id}`;
+
+            // Trades summary (moved out of the table to keep the viewport narrow)
+            const statsEl = chartRow.querySelector('.trade-stats');
+            statsEl.innerHTML = `· <span class="font-semibold text-gray-200">${stratData.total_trades} trades</span> ` +
+                `<span class="text-green-400">${stratData.wins || 0}W</span> / <span class="text-red-400">${stratData.losses || 0}L</span>`;
+
+            // Daily PnL mini-bars (cumulative view), scaled to fit
+            const barsRow = chartRow.querySelector('.trade-bars-row');
+            if (stratData.daily_breakdown && stratData.daily_breakdown.length > 0) {
+                const maxAbs = Math.max(...stratData.daily_breakdown.map(d => Math.abs(d.pnl)), 0.01);
+                const bars = stratData.daily_breakdown.map(d => {
+                    const color = d.pnl > 0 ? '#3fb950' : d.pnl < 0 ? '#f85149' : '#484f58';
+                    const h = Math.max(3, Math.round(Math.abs(d.pnl) / maxAbs * 16));
+                    return `<span title="${d.day.slice(5)}: $${d.pnl.toFixed(2)} (${d.trades}t)" style="height:${h}px;background:${color};"></span>`;
+                }).join('');
+                barsRow.innerHTML = `<div class="text-[10px] text-gray-500 mb-1">${stratData.days_traded}/${stratData.total_days} days active · daily PnL</div>` +
+                    `<div class="pnl-bars" style="max-width:100%;width:100%;">${bars}</div>`;
+            } else {
+                barsRow.innerHTML = '';
+            }
+
+            // Render Charts
+            const cvsEq = chartRow.querySelector('.eq-chart').getContext('2d');
+            const cvsDd = chartRow.querySelector('.dd-chart').getContext('2d');
+
+            // Prepare Data
+            const labels = [];
+            const eqPts = [];
+            const ddPts = [];
+
+            stratData.equity_curve.forEach(pt => {
+                labels.push(''); // No time labels needed for quick view
+                eqPts.push(pt.equity);
+                ddPts.push(-pt.drawdown);
+            });
+
+            Chart.defaults.color = '#7d8590';
+            Chart.defaults.borderColor = '#21262d';
+
+            activeCharts[`eq_${stratData.id}`] = new Chart(cvsEq, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Equity', data: eqPts,
+                        borderColor: '#2f81f7', backgroundColor: 'rgba(47, 129, 247, 0.12)',
+                        fill: true, pointRadius: 0, borderWidth: 2, tension: 0.1
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, scales: { x: { display: false } } }
+            });
+
+            activeCharts[`dd_${stratData.id}`] = new Chart(cvsDd, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Drawdown (%)', data: ddPts,
+                        borderColor: '#f85149', backgroundColor: 'rgba(248, 81, 73, 0.15)',
+                        fill: true, pointRadius: 0, borderWidth: 1, stepped: true
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, scales: { x: { display: false } } }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+
+</html>

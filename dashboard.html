@@ -85,6 +85,12 @@
             <p id="expl-text" class="whitespace-pre-wrap"></p>
         </div>
 
+        <!-- Config ID badge -->
+        <div id="config-id-box" class="card px-4 py-2 mb-4 rounded-lg border inline-flex items-center gap-2 text-sm hidden">
+            <span class="font-medium text-gray-500">Config ID:</span>
+            <span id="config-id-value" class="text-cyan-400 font-mono font-bold">--</span>
+        </div>
+
         <!-- Parameter overview -->
         <div class="card p-4 mb-6 rounded-lg border grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-gray-300">
             <div><span class="font-medium text-gray-500">Signal Params:</span> <span id="param-trend">--</span></div>
@@ -148,6 +154,13 @@
                 if (!response.ok) throw new Error("JSON not found or server not running");
 
                 const data = await response.json();
+                
+                // Show Config ID badge if viewing a specific strategy
+                if (configId) {
+                    document.getElementById('config-id-box').classList.remove('hidden');
+                    document.getElementById('config-id-value').textContent = configId;
+                }
+                
                 updateDashboard(data, !!configId);
             } catch (err) {
                 console.error("Failed to load backtest data:", err);
@@ -158,10 +171,10 @@
         function updateDashboard(data, isDiscovery) {
             let summary = data.summary ? data.summary : data;
 
-            let pnl = summary.net_profit;
-            let win_rate = summary.win_rate_pct || summary.win_rate;
-            let total_trades = summary.total_trades;
-            let drawdown = summary.max_drawdown_pct || summary.max_dd;
+            let pnl = summary.net_profit || 0;
+            let win_rate = summary.win_rate_pct !== undefined ? summary.win_rate_pct : (summary.win_rate || 0);
+            let total_trades = summary.total_trades || 0;
+            let drawdown = summary.max_drawdown_pct !== undefined ? summary.max_drawdown_pct : (summary.max_dd !== undefined ? summary.max_dd : 0);
             let streak = summary.max_consecutive_losses !== undefined ? summary.max_consecutive_losses : "--";
             let tradesList = data.trades || summary.trades || [];
             let wins = summary.wins !== undefined ? summary.wins : tradesList.filter(t => t.pnl > 0).length;
@@ -241,13 +254,15 @@
             const equityData = [];
             const ddData = [];
 
-            summary.equity_curve.forEach(pt => {
-                const date = new Date(pt.time);
-                // Formatting nicely MM/DD HH:mm
-                labels.push(`${date.getMonth() + 1}/${date.getDate()} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`);
-                equityData.push(pt.equity);
-                ddData.push(-pt.drawdown); // Drawdown typically displayed as negative
-            });
+            if (summary.equity_curve && summary.equity_curve.length > 0) {
+                summary.equity_curve.forEach(pt => {
+                    const date = new Date(pt.time);
+                    // Formatting nicely MM/DD HH:mm
+                    labels.push(`${date.getMonth() + 1}/${date.getDate()} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`);
+                    equityData.push(pt.equity);
+                    ddData.push(-(pt.drawdown || 0)); // Drawdown typically displayed as negative
+                });
+            }
 
             // Update Charts
             renderCharts(labels, equityData, ddData);
