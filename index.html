@@ -139,6 +139,77 @@
             font-weight: 600;
         }
 
+        .side-desc {
+            display: block;
+            font-size: 11px;
+            line-height: 1.35;
+            color: var(--gh-fg-muted);
+            padding: 0 8px 4px 8px;
+        }
+
+        /* Help / legend block */
+        .help-block summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 6px 8px;
+            border-radius: 6px;
+            color: var(--gh-fg-muted);
+            font-weight: 600;
+            font-size: 12px;
+            user-select: none;
+        }
+
+        .help-block summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .help-block summary:hover {
+            background-color: var(--gh-btn);
+            color: var(--gh-fg);
+        }
+
+        .help-block[open] summary {
+            color: var(--gh-accent-fg);
+        }
+
+        .help-body {
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--gh-fg-muted);
+            padding: 4px 8px 8px 8px;
+        }
+
+        .help-body b {
+            color: var(--gh-fg);
+            font-weight: 600;
+        }
+
+        .help-body ul {
+            margin: 4px 0 8px 0;
+            padding-left: 16px;
+        }
+
+        .help-body li {
+            margin-bottom: 4px;
+        }
+
+        /* Contextual description under the page title */
+        #view-desc {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--gh-fg-muted);
+            margin-top: 6px;
+            max-width: 720px;
+        }
+
+        #view-desc b {
+            color: var(--gh-fg);
+        }
+
+        th[title] {
+            cursor: help;
+        }
+
         details.month-group summary {
             cursor: pointer;
             list-style: none;
@@ -369,19 +440,43 @@
                 <span class="side-label">Views</span>
                 <a href="?source=discovery_results.json" data-source="discovery_results.json"
                     class="side-link day-link">📈 All-Time Leaderboard</a>
+                <span class="side-desc">Original in-sample backtest (Jan 1 – Mar 6). Optimistic by construction — strategies were selected because they won here.</span>
                 <a href="?source=live_results_cumulative.json" data-source="live_results_cumulative.json"
                     class="side-link day-link">📊 Cumulative</a>
+                <span class="side-desc">Day-by-day out-of-sample results summed over all live-test days. The realistic track record.</span>
                 <a href="?source=live_results_v2_cumulative.json" data-source="live_results_v2_cumulative.json"
                     class="side-link day-link">🧪 V2 Cumulative (OOS)</a>
+                <span class="side-desc">New strategies found with walk-forward validation, tested only on days never seen during optimization.</span>
                 <a href="?source=live_results_v2_portfolio.json" data-source="live_results_v2_portfolio.json"
                     class="side-link day-link">💼 Portofoliu V2</a>
+                <span class="side-desc">Equal-weight combo of 3 uncorrelated V2 winners (one per family). Smoother curve, lower drawdown.</span>
                 <a href="?source=discovery_results_v2.json" data-source="discovery_results_v2.json"
                     class="side-link day-link">🧪 V2 Discovery</a>
+                <span class="side-desc">Raw walk-forward search results behind the V2 leaderboard.</span>
             </div>
+            <details class="help-block px-3">
+                <summary>ℹ️ How to read this</summary>
+                <div class="help-body">
+                    <b>Columns</b>
+                    <ul>
+                        <li><b>Win Rate</b> — % of winning trades.</li>
+                        <li><b>Max DD</b> — worst peak-to-trough drop of the equity curve, in %.</li>
+                        <li><b>Max Streak</b> — losses in a row before the sizing sequence resets.</li>
+                        <li><b>Net Profit</b> — total $ PnL on a $500 starting capital.</li>
+                        <li><b>Calmar</b> — return ÷ drawdown; higher = smoother ride.</li>
+                    </ul>
+                    <b>Rule of thumb</b>
+                    <ul>
+                        <li>Trust <b>Cumulative / V2 (OOS)</b>, not All-Time: those are days the strategies never saw during selection.</li>
+                        <li>Click any row for equity + drawdown charts and the full stats page.</li>
+                    </ul>
+                </div>
+            </details>
             <div class="px-3 pt-2 pb-1 flex items-center justify-between">
                 <span class="side-label" style="padding-left: 8px;">Live tests</span>
                 <span id="day-count" class="gh-counter">--</span>
             </div>
+            <span class="side-desc px-3">Single-day simulations on unseen days. Each day starts fresh at $500.</span>
             <div id="day-nav" class="flex-1 overflow-y-auto px-2 pb-3 text-sm"></div>
             <div class="p-3 border-t" style="border-color: var(--gh-border);">
                 <button onclick="loadData()" class="gh-btn-primary w-full px-3 py-1.5 text-sm">⟳ Refresh
@@ -399,6 +494,7 @@
                     Configurations Tested:
                     <span id="total-tested" class="gh-counter">--</span>
                 </p>
+                <p id="view-desc"></p>
             </div>
 
         <!-- Metrics strip (FreqUI backtest-panel style) -->
@@ -494,15 +590,19 @@
                             <th scope="col" class="px-2 py-3">Config ID</th>
                             <th scope="col" class="px-3 py-3">Signal (Param)</th>
                             <th scope="col" class="px-3 py-3">Sizing Rule</th>
-                            <th scope="col" class="px-3 py-3 cursor-pointer sortable" data-sort="win_rate">Win Rate</th>
-                            <th scope="col" class="px-3 py-3 cursor-pointer sortable" data-sort="max_dd">Max DD</th>
+                            <th scope="col" class="px-3 py-3 cursor-pointer sortable" data-sort="win_rate"
+                                title="Percentage of winning trades">Win Rate</th>
+                            <th scope="col" class="px-3 py-3 cursor-pointer sortable" data-sort="max_dd"
+                                title="Worst peak-to-trough equity drop, in %">Max DD</th>
                             <th scope="col" class="px-3 py-3 text-center cursor-pointer sortable"
-                                data-sort="max_series_losses">Max Streak</th>
-                            <th scope="col" class="px-3 py-3 text-right cursor-pointer sortable" data-sort="net_profit">
-                                Net Profit ($-)</th>
+                                data-sort="max_series_losses"
+                                title="Losses in a row before the bet-sizing sequence resets">Max Streak</th>
+                            <th scope="col" class="px-3 py-3 text-right cursor-pointer sortable" data-sort="net_profit"
+                                title="Total profit/loss in $ on a $500 starting capital">Net Profit ($-)</th>
                             <th scope="col"
                                 class="px-3 py-3 text-right cursor-pointer sortable group group-hover:bg-gray-700"
-                                data-sort="calmar">
+                                data-sort="calmar"
+                                title="Return divided by max drawdown — higher means a smoother ride">
                                 Risk-Adj (Calmar) &darr;</th>
                         </tr>
                     </thead>
@@ -635,10 +735,32 @@
             });
         }
 
+        // Plain-language description shown under the title, per view
+        const VIEW_DESCRIPTIONS = {
+            'discovery_results.json': '⚠️ <b>In-sample backtest</b> (Jan 1 – Mar 6): strategies were <b>selected because they performed well here</b>. Treat these numbers as the optimistic ceiling, not expected reality.',
+            'live_results_cumulative.json': '✅ <b>Out-of-sample track record</b>: every strategy was simulated day by day on market days it had never seen, then results were summed. This is the realistic performance view.',
+            'live_results_v2_cumulative.json': '🧪 <b>V2 strategies, tested on 100% unseen days</b> (Jun 20 onward). These were found with walk-forward validation and strict filters — the cleanest evaluation on this dashboard.',
+            'live_results_v2_portfolio.json': '💼 <b>Equal-weight portfolio</b> of the 3 uncorrelated V2 winners (Context Tree + Meta Labeling + Tree Sequence). Daily PnL is averaged across members — lower drawdown, steadier curve.',
+            'discovery_results_v2.json': '🧪 <b>Raw V2 search results</b>: survivors of the walk-forward grid search, before the out-of-sample live test. Check their V2 Cumulative numbers before trusting these.',
+        };
+        const DAY_DESC = '📅 <b>Single-day simulation</b> on one unseen market day. Every strategy starts the day with a fresh $500 — no compounding between days.';
+
+        function updateViewDescription(sourceFile) {
+            const el = document.getElementById('view-desc');
+            if (!el) return;
+            if (/^live_results(_v2)?_\d{4}-\d{2}-\d{2}\.json$/.test(sourceFile)) {
+                el.innerHTML = DAY_DESC + (sourceFile.includes('_v2_') ? ' This day belongs to the <b>V2</b> strategy pool.' : '');
+            } else {
+                el.innerHTML = VIEW_DESCRIPTIONS[sourceFile] || '';
+            }
+        }
+
         async function loadData() {
             try {
                 const urlParams = new URLSearchParams(window.location.search);
                 const sourceFile = urlParams.get('source') || 'discovery_results.json';
+
+                updateViewDescription(sourceFile);
 
                 const response = await fetch(sourceFile + '?' + new Date().getTime());
                 if (!response.ok) throw new Error("File not found");
