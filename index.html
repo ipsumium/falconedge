@@ -210,6 +210,24 @@
             cursor: help;
         }
 
+        /* Mobile: tighter table, hide less-important columns */
+        @media (max-width: 767px) {
+
+            #leaderboard-table th,
+            #leaderboard-table td {
+                padding: 4px 4px !important;
+                font-size: 11px;
+            }
+
+            .hide-sm {
+                display: none !important;
+            }
+
+            .metric-value {
+                font-size: 16px;
+            }
+        }
+
         details.month-group summary {
             cursor: pointer;
             list-style: none;
@@ -430,7 +448,8 @@
 <body>
     <div class="flex min-h-screen">
         <!-- Sidebar (FreqUI-inspired navigation) -->
-        <aside class="w-60 shrink-0 border-r flex flex-col sticky top-0 h-screen"
+        <aside id="sidebar"
+            class="w-60 shrink-0 border-r flex flex-col fixed md:sticky inset-y-0 md:top-0 left-0 z-40 h-screen transform -translate-x-full md:translate-x-0 transition-transform duration-200"
             style="background-color: var(--gh-canvas-subtle); border-color: var(--gh-border);">
             <div class="p-4 border-b" style="border-color: var(--gh-border);">
                 <div class="font-semibold text-white">⚡ FalconEdge</div>
@@ -467,7 +486,13 @@
         </aside>
 
         <!-- Main content -->
-        <main class="flex-1 min-w-0 p-6">
+        <main class="flex-1 min-w-0 p-4 md:p-6">
+            <button id="menu-btn" class="gh-btn px-3 py-1.5 text-lg"
+                style="display:none; position:fixed; top:12px; right:12px; z-index:50;"
+                onclick="toggleSidebar()">☰</button>
+            <div id="backdrop" class="fixed inset-0 z-30 hidden"
+                style="background: rgba(1,4,9,0.6);" onclick="toggleSidebar(false)"></div>
+            <div id="leaderboard-view">
             <div class="mb-4 pb-4 border-b" style="border-color: var(--gh-border);">
                 <h1 id="page-title" class="text-2xl font-semibold text-white tracking-tight">Strategy Discovery
                     Leaderboard
@@ -601,7 +626,7 @@
                                 title="Percentage of winning trades">Win Rate</th>
                             <th scope="col" class="px-3 py-3 cursor-pointer sortable" data-sort="max_dd"
                                 title="Worst peak-to-trough equity drop, in %">Max DD</th>
-                            <th scope="col" class="px-3 py-3 text-center cursor-pointer sortable"
+                            <th scope="col" class="px-3 py-3 text-center cursor-pointer sortable hide-sm"
                                 data-sort="max_series_losses"
                                 title="Losses in a row before the bet-sizing sequence resets">Max Streak</th>
                             <th scope="col" class="px-3 py-3 text-right cursor-pointer sortable" data-sort="net_profit"
@@ -619,6 +644,107 @@
                 </table>
             </div>
         </div>
+            </div><!-- /leaderboard-view -->
+
+            <!-- Strategy detail view (SPA — sidebar stays visible, no new tab) -->
+            <div id="detail-view" style="display:none;">
+                <div class="mb-4 pb-4 border-b flex items-center gap-3 flex-wrap"
+                    style="border-color: var(--gh-border);">
+                    <button class="gh-btn px-3 py-1.5 text-sm" onclick="closeDetail()">← Back</button>
+                    <div class="min-w-0">
+                        <h1 id="detail-title" class="text-xl font-semibold text-white tracking-tight break-all">--
+                        </h1>
+                        <p class="text-sm mt-0.5" style="color: var(--gh-fg-muted);">Full strategy report</p>
+                    </div>
+                </div>
+
+                <div id="detail-error" class="card border rounded-md p-4 mb-4" style="display:none;">
+                    <b>Could not load the report for this strategy.</b>
+                    <p class="text-sm mt-1" style="color: var(--gh-fg-muted);">The detail file is missing on the
+                        server. Quick view in the leaderboard may still work.</p>
+                </div>
+
+                <div id="detail-content" style="display:none;">
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 mb-4">
+                        <div class="card border rounded-md p-3">
+                            <div class="metric-label">Net Profit</div>
+                            <div id="d-pnl" class="metric-value">--</div>
+                        </div>
+                        <div class="card border rounded-md p-3">
+                            <div class="metric-label">Win Rate</div>
+                            <div id="d-wr" class="metric-value">--</div>
+                        </div>
+                        <div class="card border rounded-md p-3">
+                            <div class="metric-label">Trades</div>
+                            <div id="d-trades" class="metric-value">--</div>
+                            <div class="metric-sub"><span id="d-wins" class="positive"></span> / <span id="d-losses"
+                                    class="negative"></span></div>
+                        </div>
+                        <div class="card border rounded-md p-3">
+                            <div class="metric-label">Max Drawdown</div>
+                            <div id="d-dd" class="metric-value negative">--</div>
+                        </div>
+                        <div class="card border rounded-md p-3">
+                            <div class="metric-label">Max Losing Streak</div>
+                            <div id="d-streak" class="metric-value" style="color: var(--gh-attention);">--</div>
+                        </div>
+                        <div class="card border rounded-md p-3">
+                            <div class="metric-label">Days Traded</div>
+                            <div id="d-days" class="metric-value">--</div>
+                        </div>
+                        <div class="card border rounded-md p-3">
+                            <div class="metric-label">Avg Daily PnL</div>
+                            <div id="d-avgday" class="metric-value">--</div>
+                            <div class="metric-sub" id="d-avgday-pct">--</div>
+                        </div>
+                    </div>
+
+                    <div id="d-expl-box" class="card border rounded-md p-4 mb-4">
+                        <div class="metric-label mb-1">Strategy description</div>
+                        <p id="d-expl" class="text-sm whitespace-pre-wrap" style="color: #c9d1d9;"></p>
+                    </div>
+
+                    <div class="card border rounded-md p-4 mb-4 grid grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+                        <div class="min-w-0"><span class="metric-label block mb-1">Signal params</span><span
+                                id="d-sigparams" class="font-mono text-xs break-all"></span></div>
+                        <div><span class="metric-label block mb-1">Sizing</span><span id="d-sizing"
+                                class="text-xs"></span></div>
+                        <div><span class="metric-label block mb-1">Session risk</span><span id="d-risk"
+                                class="font-mono text-xs break-all"></span></div>
+                        <div><span class="metric-label block mb-1">Capital</span><span id="d-capital"
+                                class="text-xs"></span></div>
+                    </div>
+
+                    <div id="d-bars" class="mb-4"></div>
+
+                    <div class="card border rounded-md p-4 mb-4" style="height: 320px;"><canvas id="d-eq"></canvas>
+                    </div>
+                    <div class="card border rounded-md p-4 mb-4" style="height: 180px;"><canvas id="d-dd"></canvas>
+                    </div>
+
+                    <div class="card border rounded-md overflow-hidden">
+                        <div class="p-3 border-b font-medium text-sm"
+                            style="border-color: var(--gh-border); background: var(--gh-overlay);">Trade Log <span
+                                id="d-trades-note" class="text-xs" style="color: var(--gh-fg-muted);"></span></div>
+                        <div class="overflow-y-auto max-h-[420px]">
+                            <table class="w-full text-sm">
+                                <thead class="text-xs uppercase sticky top-0"
+                                    style="background: var(--gh-canvas-subtle); color: var(--gh-fg-muted);">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left">Time (UTC)</th>
+                                        <th class="px-4 py-2 text-left">Direction</th>
+                                        <th class="px-4 py-2 text-left">Shares</th>
+                                        <th class="px-4 py-2 text-left">Step</th>
+                                        <th class="px-4 py-2 text-right">Net PnL</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="d-tradelog" class="divide-y" style="border-color: var(--gh-border-muted);">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 
@@ -631,9 +757,9 @@
                         <span class="text-gray-300 text-sm font-medium">Quick Equity View</span>
                         <span class="trade-stats text-sm ml-3"></span>
                     </div>
-                    <a href="#" target="_blank"
+                    <a href="#"
                         class="detail-link gh-btn-primary px-4 py-1.5 text-xs font-bold shadow">Open
-                        Full Stats Page</a>
+                        Full Stats</a>
                 </div>
                 <div class="trade-bars-row mb-3"></div>
                 <div class="grid grid-cols-1 gap-4">
@@ -653,6 +779,28 @@
         let filteredData = [];
         let currentSort = { col: 'calmar', asc: false };
         let activeCharts = {}; // Track chart instances to destroy them
+        let currentSource = 'discovery_results.json';
+        let detailCharts = {};
+
+        // --- Mobile sidebar ---
+        function toggleSidebar(force) {
+            const sb = document.getElementById('sidebar');
+            const bd = document.getElementById('backdrop');
+            const open = force !== undefined ? force : sb.classList.contains('-translate-x-full');
+            sb.classList.toggle('-translate-x-full', !open);
+            bd.classList.toggle('hidden', !open);
+        }
+
+        function syncMenuButton() {
+            document.getElementById('menu-btn').style.display = window.innerWidth < 768 ? 'block' : 'none';
+        }
+        window.addEventListener('resize', syncMenuButton);
+        syncMenuButton();
+
+        // Close the mobile sidebar when navigating
+        document.getElementById('sidebar').addEventListener('click', (e) => {
+            if (e.target.closest('a') && window.innerWidth < 768) toggleSidebar(false);
+        });
 
         const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -766,6 +914,7 @@
             try {
                 const urlParams = new URLSearchParams(window.location.search);
                 const sourceFile = urlParams.get('source') || 'discovery_results.json';
+                currentSource = sourceFile;
 
                 updateViewDescription(sourceFile);
 
@@ -910,7 +1059,7 @@
                     <td class="px-3 py-2 text-sm">${sizeStr}</td>
                     <td class="px-3 py-2 font-medium text-sm whitespace-nowrap ${strat.win_rate >= 50 ? 'text-green-400' : 'text-red-400'}">${strat.win_rate.toFixed(2)}%</td>
                     <td class="px-3 py-2 font-medium text-red-300 text-sm whitespace-nowrap">${strat.max_dd.toFixed(1)}%</td>
-                    <td class="px-3 py-2 text-center text-orange-400 font-bold text-sm whitespace-nowrap">${strat.max_series_losses}</td>
+                    <td class="px-3 py-2 text-center text-orange-400 font-bold text-sm whitespace-nowrap hide-sm">${strat.max_series_losses}</td>
                     <td class="px-3 py-2 text-right ${pnlClass} text-sm whitespace-nowrap">$${strat.net_profit.toFixed(2)}</td>
                     <td class="px-3 py-2 text-right ${calmarClass} text-sm whitespace-nowrap">${strat.calmar.toFixed(3)}</td>
                 `;
@@ -942,9 +1091,10 @@
             // Insert exactly after the clicked row
             row.parentNode.insertBefore(chartRow, row.nextSibling);
 
-            // Set Detail Link
+            // Set Detail Link (opens in-page, keeps the sidebar — no new tab)
             const detailLink = chartRow.querySelector('.detail-link');
-            detailLink.href = `dashboard.html?config=${stratData.id}`;
+            detailLink.href = `?config=${stratData.id}`;
+            detailLink.onclick = (e) => { e.preventDefault(); openDetail(stratData.id); };
 
             // Trades summary (moved out of the table to keep the viewport narrow)
             const statsEl = chartRow.querySelector('.trade-stats');
@@ -1011,7 +1161,148 @@
             });
         }
 
-        window.addEventListener('DOMContentLoaded', loadData);
+        // --- In-page detail view ---
+        function openDetail(id, push = true) {
+            document.getElementById('leaderboard-view').classList.add('hidden');
+            document.getElementById('detail-view').style.display = '';
+            document.getElementById('detail-error').style.display = 'none';
+            document.getElementById('detail-content').style.display = 'none';
+            window.scrollTo(0, 0);
+            if (push) history.pushState({ view: 'detail', id }, '', `?config=${encodeURIComponent(id)}`);
+            fetch(`discovery_details/${encodeURIComponent(id)}.json?t=${Date.now()}`)
+                .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+                .then(data => renderDetail(id, data))
+                .catch(() => { document.getElementById('detail-error').style.display = ''; });
+        }
+
+        function closeDetail(push = true) {
+            destroyDetailCharts();
+            document.getElementById('detail-view').style.display = 'none';
+            document.getElementById('leaderboard-view').classList.remove('hidden');
+            if (push) history.pushState({ view: 'list' }, '', `?source=${encodeURIComponent(currentSource)}`);
+        }
+
+        function destroyDetailCharts() {
+            Object.values(detailCharts).forEach(c => { try { c.destroy(); } catch (e) {} });
+            detailCharts = {};
+        }
+
+        function renderDetail(id, data) {
+            destroyDetailCharts();
+            const s = data.summary || data;
+            const num = v => (typeof v === 'number' && !isNaN(v)) ? v : 0;
+            const tradesArr = data.trades || s.trades || [];
+            const net = num(s.net_profit);
+            const wr = num(s.win_rate_pct ?? s.win_rate);
+            const trades = num(s.total_trades ?? tradesArr.length);
+            const wins = num(s.winning_trades ?? s.wins ?? Math.round(trades * wr / 100));
+            const losses = num(s.losing_trades ?? s.losses ?? (trades - wins));
+            const dd = num(s.max_drawdown_pct ?? s.max_dd);
+            const streak = num(s.max_consecutive_losses ?? s.max_series_losses);
+            const initCap = num((data.execution_params || {}).capital ?? s.initial_capital ?? 500) || 500;
+
+            const ec = data.equity_curve || s.equity_curve || [];
+            const db = data.daily_breakdown || s.daily_breakdown || [];
+            let labels = [], equity = [], ddStored = [];
+            if (ec.length) {
+                ec.forEach(p => {
+                    const t = p.time || p.t || '';
+                    labels.push(t.length >= 16 ? t.slice(5, 16).replace('T', ' ') : t);
+                    equity.push(num(typeof p === 'object' ? (p.equity ?? p.pnl) : p));
+                    ddStored.push(typeof p === 'object' && p.drawdown !== undefined ? num(p.drawdown) : null);
+                });
+            } else if (db.length) {
+                let cum = initCap;
+                db.forEach(d => { cum += num(d.pnl); labels.push(d.date || d.day || ''); equity.push(cum); ddStored.push(null); });
+            }
+            // Days traded: from metadata, daily breakdown, or unique dates in the curve
+            let totalDays = num(s.total_days ?? db.length);
+            if (!totalDays && labels.length) totalDays = new Set(labels.map(l => l.slice(0, 5))).size;
+            const daysTraded = num(s.days_traded ?? totalDays);
+            const avgDay = totalDays > 0 ? net / totalDays : 0;
+            const avgDayPct = avgDay / initCap * 100;
+
+            document.getElementById('detail-title').textContent = id;
+            const set = (elId, val) => document.getElementById(elId).textContent = val;
+            set('d-pnl', '$' + net.toFixed(2));
+            document.getElementById('d-pnl').className = 'metric-value ' + (net >= 0 ? 'positive' : 'negative');
+            set('d-wr', wr.toFixed(1) + '%'); set('d-trades', trades);
+            set('d-wins', wins + 'W'); set('d-losses', losses + 'L');
+            set('d-dd', dd.toFixed(2) + '%'); set('d-streak', streak);
+            set('d-days', totalDays ? daysTraded + ' / ' + totalDays : '—');
+            set('d-avgday', '$' + avgDay.toFixed(2)); set('d-avgday-pct', avgDayPct.toFixed(2) + '% / day');
+
+            const explBox = document.getElementById('d-expl-box');
+            if (s.explanation || data.explanation) {
+                document.getElementById('d-expl').textContent = s.explanation || data.explanation;
+                explBox.style.display = '';
+            } else explBox.style.display = 'none';
+
+            const fmtParams = obj => obj ? Object.entries(obj).map(([k, v]) =>
+                `<div class="flex justify-between gap-3 py-0.5"><span style="color:var(--gh-fg-muted);">${k}</span><span class="font-mono text-xs text-right">${typeof v === 'object' ? JSON.stringify(v) : v}</span></div>`).join('') : '<span class="text-xs" style="color:var(--gh-fg-muted);">n/a</span>';
+            document.getElementById('d-sigparams').innerHTML = fmtParams(s.signal_params || data.signal_params || data.params);
+            document.getElementById('d-sizing').innerHTML = fmtParams(s.sizing_params || data.sizing_params);
+            document.getElementById('d-risk').innerHTML = fmtParams(s.session_params || data.session_params || data.risk_params);
+            const exec = data.execution_params || {};
+            document.getElementById('d-capital').innerHTML = fmtParams({
+                capital: '$' + initCap,
+                final: s.final_capital !== undefined ? '$' + num(s.final_capital).toFixed(2) : '$' + (initCap + net).toFixed(2),
+                slippage: num(exec.slippage_pct ?? 0.5).toFixed(2) + '%'
+            });
+
+            // Equity + drawdown charts (stacked, full width — no horizontal scroll)
+            Chart.defaults.color = '#7d8590';
+            Chart.defaults.borderColor = '#21262d';
+            if (equity.length) {
+                document.getElementById('d-bars').innerHTML =
+                    `<span class="text-xs" style="color:var(--gh-fg-muted);">${labels[0]} → ${labels[labels.length - 1]} · ${equity.length} pts</span>`;
+                detailCharts.eq = new Chart(document.getElementById('d-eq'), {
+                    type: 'line',
+                    data: { labels, datasets: [{ label: 'Equity', data: equity, borderColor: '#2f81f7', backgroundColor: 'rgba(47,129,247,.12)', fill: true, borderWidth: 1.5, pointRadius: 0, tension: 0.1 }] },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { maxTicksLimit: 8 } }, y: { ticks: { callback: v => '$' + v } } } }
+                });
+                let peak = -Infinity;
+                const ddArr = equity.map((v, i) => {
+                    if (ddStored[i] !== null) return -ddStored[i];
+                    peak = Math.max(peak, v); return peak > 0 ? (v - peak) / peak * 100 : 0;
+                });
+                detailCharts.dd = new Chart(document.getElementById('d-dd'), {
+                    type: 'line',
+                    data: { labels, datasets: [{ label: 'Drawdown %', data: ddArr, borderColor: '#f85149', backgroundColor: 'rgba(248,81,73,.12)', fill: true, borderWidth: 1.5, pointRadius: 0, tension: 0.1 }] },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { maxTicksLimit: 8 } }, y: { ticks: { callback: v => v.toFixed(1) + '%' } } } }
+                });
+            } else document.getElementById('d-bars').innerHTML = '';
+
+            // Trade log (cap 500 rows)
+            const cap = 500;
+            document.getElementById('d-tradelog').innerHTML = tradesArr.slice(0, cap).map(t => {
+                const pnl = num(t.pnl);
+                const up = (t.direction || '').toLowerCase() === 'up';
+                const tstr = (t.time || '').length >= 16 ? t.time.slice(5, 16).replace('T', ' ') : (t.time || '');
+                return `<tr>
+                    <td class="px-4 py-1.5 whitespace-nowrap" style="color:var(--gh-fg-muted);">${tstr}</td>
+                    <td class="px-4 py-1.5 ${up ? 'positive' : 'negative'}">${(t.direction || '').toUpperCase()}</td>
+                    <td class="px-4 py-1.5">${num(t.size_shares).toFixed(1)}</td>
+                    <td class="px-4 py-1.5" style="color:var(--gh-fg-muted);">${t.series_step ?? ''}</td>
+                    <td class="px-4 py-1.5 text-right ${pnl >= 0 ? 'positive' : 'negative'}">${pnl >= 0 ? '+' : ''}$${pnl.toFixed(2)}</td>
+                </tr>`;
+            }).join('');
+            document.getElementById('d-trades-note').textContent = tradesArr.length > cap ? `· showing first ${cap} of ${tradesArr.length}` : `· ${tradesArr.length} trades`;
+            document.getElementById('detail-content').style.display = '';
+        }
+
+        window.addEventListener('popstate', () => route());
+
+        function route() {
+            const cfg = new URLSearchParams(location.search).get('config');
+            if (cfg) openDetail(cfg, false);
+            else if (document.getElementById('detail-view').style.display !== 'none') closeDetail(false);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadData();
+            route();
+        });
     </script>
 </body>
 
