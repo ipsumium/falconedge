@@ -565,7 +565,7 @@
         </div>
 
         <!-- Filters -->
-        <div class="card p-4 rounded-lg border mb-6 flex gap-4 text-sm items-center">
+        <div class="card p-4 rounded-lg border mb-6 flex flex-wrap gap-3 text-sm items-center">
             <span class="font-bold text-gray-300">Filters:</span>
 
             <label class="flex items-center space-x-2 text-gray-400">
@@ -719,7 +719,7 @@
 
                     <div class="card border rounded-md p-4 mb-4" style="height: 320px;"><canvas id="d-eq"></canvas>
                     </div>
-                    <div class="card border rounded-md p-4 mb-4" style="height: 180px;"><canvas id="d-dd"></canvas>
+                    <div class="card border rounded-md p-4 mb-4" style="height: 180px;"><canvas id="d-ddchart"></canvas>
                     </div>
 
                     <div class="card border rounded-md overflow-hidden">
@@ -1250,12 +1250,34 @@
                 slippage: num(exec.slippage_pct ?? 0.5).toFixed(2) + '%'
             });
 
+            // Daily PnL bins (same visual language as quick view)
+            const dayLast = new Map();
+            if (ec.length) ec.forEach(p => {
+                const d = (p.time || p.t || '').slice(0, 10);
+                if (d) dayLast.set(d, num(typeof p === 'object' ? (p.equity ?? p.pnl) : p));
+            });
+            let daily = [];
+            if (dayLast.size > 1) {
+                let prev = initCap;
+                dayLast.forEach((v, d) => { daily.push({ day: d, pnl: v - prev }); prev = v; });
+            } else if (db.length) daily = db.map(d => ({ day: d.date || d.day || '', pnl: num(d.pnl) }));
+
+            const barsEl = document.getElementById('d-bars');
+            if (daily.length) {
+                const maxAbs = Math.max(...daily.map(d => Math.abs(d.pnl)), 0.01);
+                const bars = daily.map(d => {
+                    const color = d.pnl > 0 ? '#3fb950' : d.pnl < 0 ? '#f85149' : '#484f58';
+                    const h = Math.max(3, Math.round(Math.abs(d.pnl) / maxAbs * 16));
+                    return `<span title="${d.day}: ${d.pnl >= 0 ? '+' : ''}$${d.pnl.toFixed(2)}" style="height:${h}px;background:${color};"></span>`;
+                }).join('');
+                barsEl.innerHTML = `<div class="text-[10px] mb-1" style="color:var(--gh-fg-muted);">${daily.length} days · daily PnL (green = profit, red = loss)${labels.length ? ' · ' + labels[0] + ' → ' + labels[labels.length - 1] : ''}</div>` +
+                    `<div class="pnl-bars" style="max-width:100%;width:100%;">${bars}</div>`;
+            } else barsEl.innerHTML = '';
+
             // Equity + drawdown charts (stacked, full width — no horizontal scroll)
             Chart.defaults.color = '#7d8590';
             Chart.defaults.borderColor = '#21262d';
             if (equity.length) {
-                document.getElementById('d-bars').innerHTML =
-                    `<span class="text-xs" style="color:var(--gh-fg-muted);">${labels[0]} → ${labels[labels.length - 1]} · ${equity.length} pts</span>`;
                 detailCharts.eq = new Chart(document.getElementById('d-eq'), {
                     type: 'line',
                     data: { labels, datasets: [{ label: 'Equity', data: equity, borderColor: '#2f81f7', backgroundColor: 'rgba(47,129,247,.12)', fill: true, borderWidth: 1.5, pointRadius: 0, tension: 0.1 }] },
@@ -1266,12 +1288,12 @@
                     if (ddStored[i] !== null) return -ddStored[i];
                     peak = Math.max(peak, v); return peak > 0 ? (v - peak) / peak * 100 : 0;
                 });
-                detailCharts.dd = new Chart(document.getElementById('d-dd'), {
+                detailCharts.dd = new Chart(document.getElementById('d-ddchart'), {
                     type: 'line',
                     data: { labels, datasets: [{ label: 'Drawdown %', data: ddArr, borderColor: '#f85149', backgroundColor: 'rgba(248,81,73,.12)', fill: true, borderWidth: 1.5, pointRadius: 0, tension: 0.1 }] },
                     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { maxTicksLimit: 8 } }, y: { ticks: { callback: v => v.toFixed(1) + '%' } } } }
                 });
-            } else document.getElementById('d-bars').innerHTML = '';
+            }
 
             // Trade log (cap 500 rows)
             const cap = 500;
