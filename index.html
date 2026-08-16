@@ -454,30 +454,12 @@
                     class="side-link day-link">🧪 V2 Discovery</a>
                 <span class="side-desc">Raw walk-forward search results behind the V2 leaderboard.</span>
             </div>
-            <details class="help-block px-3">
-                <summary>ℹ️ How to read this</summary>
-                <div class="help-body">
-                    <b>Columns</b>
-                    <ul>
-                        <li><b>Win Rate</b> — % of winning trades.</li>
-                        <li><b>Max DD</b> — worst peak-to-trough drop of the equity curve, in %.</li>
-                        <li><b>Max Streak</b> — losses in a row before the sizing sequence resets.</li>
-                        <li><b>Net Profit</b> — total $ PnL on a $500 starting capital.</li>
-                        <li><b>Calmar</b> — return ÷ drawdown; higher = smoother ride.</li>
-                    </ul>
-                    <b>Rule of thumb</b>
-                    <ul>
-                        <li>Trust <b>Cumulative / V2 (OOS)</b>, not All-Time: those are days the strategies never saw during selection.</li>
-                        <li>Click any row for equity + drawdown charts and the full stats page.</li>
-                    </ul>
-                </div>
-            </details>
             <div class="px-3 pt-2 pb-1 flex items-center justify-between">
                 <span class="side-label" style="padding-left: 8px;">Live tests</span>
                 <span id="day-count" class="gh-counter">--</span>
             </div>
             <span class="side-desc px-3">Single-day simulations on unseen days. Each day starts fresh at $500.</span>
-            <div id="day-nav" class="flex-1 overflow-y-auto px-2 pb-3 text-sm"></div>
+            <div id="day-nav" class="flex-1 min-h-0 overflow-y-auto px-2 pb-3 text-sm"></div>
             <div class="p-3 border-t" style="border-color: var(--gh-border);">
                 <button onclick="loadData()" class="gh-btn-primary w-full px-3 py-1.5 text-sm">⟳ Refresh
                     Leaderboard</button>
@@ -496,6 +478,31 @@
                 </p>
                 <p id="view-desc"></p>
             </div>
+
+        <!-- Help banner (moved out of the sidebar so it never blocks scrolling) -->
+        <details class="help-block card border rounded-md mb-4">
+            <summary>ℹ️ How to read this dashboard — click to expand</summary>
+            <div class="help-body grid grid-cols-1 md:grid-cols-2 gap-4 px-4 pb-3">
+                <div>
+                    <b>Columns</b>
+                    <ul>
+                        <li><b>Win Rate</b> — % of winning trades.</li>
+                        <li><b>Max DD</b> — worst peak-to-trough drop of the equity curve, in %.</li>
+                        <li><b>Max Streak</b> — losses in a row before the sizing sequence resets.</li>
+                        <li><b>Net Profit</b> — total $ PnL on a $500 starting capital.</li>
+                        <li><b>Calmar</b> — return ÷ drawdown; higher = smoother ride.</li>
+                    </ul>
+                </div>
+                <div>
+                    <b>Rule of thumb</b>
+                    <ul>
+                        <li>Trust <b>Cumulative / V2 (OOS)</b>, not All-Time: those are days the strategies never saw during selection.</li>
+                        <li><b>Portofoliu V2</b> shows the combined curve of the 3 uncorrelated winners — steadier, lower drawdown.</li>
+                        <li>Click any row for equity + drawdown charts and the full stats page.</li>
+                    </ul>
+                </div>
+            </div>
+        </details>
 
         <!-- Metrics strip (FreqUI backtest-panel style) -->
         <div class="grid grid-cols-2 md:grid-cols-6 gap-3 mb-4">
